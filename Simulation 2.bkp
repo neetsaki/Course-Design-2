@@ -1,0 +1,377 @@
+MM "36.0" FLAVOR "NO" VERSION "36.0" DATETIME "Thu Aug 29 14:47:35 2019" 
+MACHINE "WIN-NT/VC"  ; 
+startlibrary
+version1
+NumLibs = 2
+Built-In
+ACM Built-In
+NumCats = 12
+Mixers/Splitters
+active
+Separators
+active
+Exchangers
+active
+Columns
+active
+Reactors
+active
+Pressure Changers
+active
+Manipulators
+active
+Solids
+active
+Solids Separators
+active
+Controllers
+active
+Batch Models
+active
+User Models
+active
+endlibrary
+; 
+1
+>VERSION 0
+B1
+RadFrac
+Built-In
+RADFRAC
+? SETUP MAIN ? \ "RUN-CLASS" RUN-CLASS = FLOWSHEET \ \ SIMULATE INTERACTIVE
+ = NO MOLEFLOW = MOLEFLOW \ ? SETUP GLOBAL ? \ "IN-UNITS" INSET = METCBAR \ ? 
+SETUP "SIM-OPTIONS" ? ; "METCBAR_MOLE" ; ? SETUP "UNITS-SET" METCBAR ? \ 
+DESCRIPTION DESCRIPTION = "User-defined units set" \ \ MMLOCAL \ \ UNITSET 
+BASESET = MET ( 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 5 3 4 3 3 3 3 3 3 3 3 4 
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+3 3 3 3 5 3 3 3 3 3 3 5 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 7 3 3 3 3 3 3 3 3 ) \ 
+? DATABANKS ? ? COMPONENTS MAIN ? \ COMPONENTS CID = WATER ANAME = H2O 
+OUTNAME = WATER DBNAME1 = "WATER" ANAME1 = "H2O" /  CID = "ETHAN-01" ANAME = 
+C2H6O-2 OUTNAME = "ETHAN-01" DBNAME1 = "ETHANOL" ANAME1 = "C2H6O-2" \ ? 
+COMPONENTS "ADA/PCS" "LE-PROP-DATA" ? ; "METCBAR_MOLE" ; ? COMPONENTS 
+"COMP-LIST" GLOBAL ? ? COMPONENTS "UNIFAC-GROUP" ? ? SOLVE ? \ "RUN-MODE" 
+MODE = SIM \ ? "DYN-OPTIONS" ? ? FLOWSHEET GLOBAL ? \ BLOCK BLKID = B1 
+BLKTYPE = RADFRAC MDLTYPE = "RadFrac" IN = ( S1 M0-1 ) OUT = ( S2 M1-2 S3 
+M2-3 ) \ ? PROPERTIES MAIN ? \ GPROPERTIES GBASEOPSET = NRTL GOPSETNAME = 
+NRTL PARCON = -2 \ ? PROPERTIES "OPTION-SETS" NRTL ? \ PARAM BASE = NRTL \ ? 
+PROPERTIES "NC-PROPS" ? ? PROPERTIES "MOLEC-STRUCT" "ETHAN-01" ? ? PROPERTIES 
+"MOLEC-STRUCT" WATER ? ? PROPERTIES PARAMETERS SUMMARY ? ? PROPERTIES 
+PARAMETERS BINARY SCALAR "MLQKIJ-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = 
+MLQKIJ SETNO = 1 \ ? PROPERTIES PARAMETERS BINARY SCALAR "RKTKIJ-1" ? ; 
+"ENG_MOLE" ; \ PROP-LIST PARAMNAME = RKTKIJ SETNO = 1 \ ? PROPERTIES 
+PARAMETERS BINARY "T-DEPENDENT" "ANDKIJ-1" ? ; "ENG_MOLE" ; \ PROP-LIST 
+PARAMNAME = ANDKIJ SETNO = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL = F NEL = 2 
+\ ? PROPERTIES PARAMETERS BINARY "T-DEPENDENT" "ANDMIJ-1" ? ; "ENG_MOLE" ; \ 
+PROP-LIST PARAMNAME = ANDMIJ SETNO = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL
+ = F NEL = 2 \ ? PROPERTIES PARAMETERS BINARY "T-DEPENDENT" "HENRY-1" ? ; 
+"METCBAR_MOLE" ; \ PROP-LIST PARAMNAME = HENRY SETNO = 1 UNITROW = 20 
+UNITLABEL = bar TUNITROW = 22 TUNITLABEL = C BDBANK = ( "APV100 BINARY" 
+"APV100 HENRY-AP" ) NEL = 7 \ ? PROPERTIES PARAMETERS BINARY "T-DEPENDENT" 
+"MUKIJ-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = MUKIJ SETNO = 1 UNITROW = 0 
+TUNITROW = 22 TUNITLABEL = F NEL = 6 \ ? PROPERTIES PARAMETERS BINARY 
+"T-DEPENDENT" "MULIJ-1" ? ; "ENG_MOLE" ; \ PROP-LIST PARAMNAME = MULIJ SETNO
+ = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL = F NEL = 11 \ ? PROPERTIES 
+PARAMETERS BINARY "T-DEPENDENT" "NRTL-1" ? ; "METCBAR_MOLE" ; \ PROP-LIST 
+PARAMNAME = NRTL SETNO = 1 UNITROW = 0 TUNITROW = 22 TUNITLABEL = C BDBANK = 
+( "APV100 VLE-IG" "APV100 LLE-ASPEN" "APV100 VLE-LIT" ) NEL = 12 \ \ BPVAL 
+PARAMNAME2 = NRTL CID1 = WATER CID2 = "ETHAN-01" UNITROW2 = 0 TUNITROW2 = 22 
+TUNITLABEL2 = C VAL1 = "APV100 VLE-IG" VAL2 = "APV100 VLE-IG" VAL3 = 
+"APV100 VLE-IG" VAL4 = "APV100 VLE-IG" VAL5 = "APV100 VLE-IG" VAL6 = 
+"APV100 VLE-IG" VAL7 = "APV100 VLE-IG" VAL8 = "APV100 VLE-IG" VAL9 = 
+"APV100 VLE-IG" VAL10 = "APV100 VLE-IG" VAL11 = "APV100 VLE-IG" VAL12 = 
+"APV100 VLE-IG" \ ? PROPERTIES "ATTR-COMPS" ? ? POLYMERS ? ? "STREAM-CLASS" 
+SUBSTREAMS ? \ DEF-SUBS-CLA SUBSTREAMS = MIXED \ \ DEF-SUBS-CLA SUBSTREAMS = 
+CISOLID \ \ DEF-SUBS-CLA SUBSTREAMS = NC \ \ DEF-SUBS-CLA SUBSTREAMS = NCPSD 
+\ \ DEF-SUBS-CLA SUBSTREAMS = CIPSD \ ? "STREAM-NAMES" ? ? "STREAM-GROUP" All 
+? \ DESCRIPTION DESCRIPTION = "All streams" \ ? "STREAM-GROUP" Boundary ? \ 
+DESCRIPTION DESCRIPTION = "Boundary streams" \ ? "STREAM-GROUP" Charge ? \ 
+DESCRIPTION DESCRIPTION = "Charge streams" \ ? "STREAM-GROUP" Feeds ? \ 
+DESCRIPTION DESCRIPTION = "Feed streams" \ ? "STREAM-GROUP" Initial ? \ 
+DESCRIPTION DESCRIPTION = "Streams with user-specified values entered" \ ? 
+"STREAM-GROUP" Products ? \ DESCRIPTION DESCRIPTION = "Product streams" \ ? 
+"STREAM-GROUP" Tears ? \ DESCRIPTION DESCRIPTION = 
+"Tear streams manipulated by the convergence algorithms" \ ? STREAM MATERIAL 
+S1 ? ; "METCBAR_MOLE" ; \ SUBSTREAM SSID = MIXED PRES = 1.1 <20> <5> VFRAC = 
+0. <0> <0> BASIS = "MOLE-FRAC" TOTFLOW = 14.46948 <-89> <6> MIXED-SPEC = PV 
+TOTAL = 1. <-89> <0> JUNK = 2 \ \ MOLE-FLOW SSID1 = MIXED CID = WATER FLOW = 
+0.884615 <-4> <0> /  SSID1 = MIXED CID = "ETHAN-01" FLOW = 0.115385 <-4> <0> 
+\ ? "EO-VARS" ? ? BLOCK RADFRAC B1 ? ; "METCBAR_MOLE" ; ; FRACT1 ; ? 
+"EO-CONV-OPTI" ? \ DMO-PARAMS MODE = DEFAULT \ \ DMO-PARAMS MODE = SIMULATION 
+\ \ DMO-PARAMS MODE = "PARAMETER-ESTIMATION" \ \ DMO-PARAMS MODE = 
+RECONCILIATION \ \ DMO-PARAMS MODE = OPTIMIZATION \ \ LSSQP-PARAMS MODE-L = 
+DEFAULT \ \ LSSQP-PARAMS MODE-L = SIMULATION \ \ LSSQP-PARAMS MODE-L = 
+"PARAMETER-ESTIMATION" \ \ LSSQP-PARAMS MODE-L = RECONCILIATION \ \ 
+LSSQP-PARAMS MODE-L = OPTIMIZATION \ \ NSOLVE-PARAM NSOLVE-MODE = DEFAULT \ \ 
+NSOLVE-PARAM NSOLVE-MODE = SIMULATION \ \ NSOLVE-PARAM NSOLVE-MODE = 
+"PARAMETER-ESTIMATION" \ \ XSLP-PARAMS XSLP-MODE = DEFAULT \ \ XSLP-PARAMS 
+XSLP-MODE = SIMULATION \ \ XSLP-PARAMS XSLP-MODE = "PARAMETER-ESTIMATION" \ \ 
+XSLP-PARAMS XSLP-MODE = RECONCILIATION \ \ XSLP-PARAMS XSLP-MODE = 
+OPTIMIZATION \ ? REPORT "STREAM-REPOR" ? \ OPTIONS MOLEFLOW = MOLEFLOW \ 
+
+ GRAPHICS_BACKUP
+PFS V 5.00
+$CONFIG
+paramdata APV100 ENRTL-RK
+paramdata APV100 VLE-IG
+paramdata APV100 VLE-RK
+paramdata APV100 VLE-HOC
+paramdata APV100 LLE-LIT
+paramdata APV100 LLE-ASPEN
+paramdata APV100 VLE-LIT
+paramdata APV100 BINARY
+paramdata APV100 EOS-LIT
+paramdata APV100 HENRY-AP
+paramdata APV100 SRK-ASPEN
+paramdata APV100 PC-SAFT
+paramdata APV100 POLYPCSF
+paramdata APV100 HYSYS
+paramdata APESV100 AP-EOS
+paramdata NISTV100 NIST-HOC
+paramdata NISTV100 NIST-IG
+paramdata NISTV100 NIST-RK
+paramdata NISTV100 NIST-EOS
+purebank APV100 PURE36
+purebank APV100 AQUEOUS
+purebank APV100 SOLIDS
+purebank APV100 INORGANIC
+purebank APESV100 AP-EOS
+purebank NISTV100 NIST-TRC
+regdbank 1
+ftn_check 1
+autoblockid 1
+autostreamid 1
+showblockid 1
+showstreamid 1
+autoplacement 1
+grid 2
+gridresolution 0.100000
+scale 0
+streamprefix S
+blockprefix B
+labelscale 1.000000
+3DOn 1
+qwformat %.0f
+tempformat %.0f
+presformat %.0f
+flowformat %.0f
+strmqwformat %.0f
+vflowformat %.0f
+mflowformat %.0f
+vfracformat %.2f
+pseudobatch 0
+partial 1
+animation 1
+runanyway 0
+globalqw 0
+globaltemp 0
+globalpres 0
+globalflow 0
+globalstrmqw 0
+globalvflow 0
+globalmflow 0
+globalvfrac 0
+globalshowcalcerror 1
+globalshowcalcwarning 1
+globalshowdisabled 1
+tooldrawvisible 0
+browserheight 7530
+browserwidth 10725
+browsertreewidth 2450
+polyplusenabled 1
+dynaplusenabled 1
+bfracenabled 1
+rtfenabled 1
+rspenabled 1
+initializeicarus 0
+pinchenabled 0
+linklimit 5000
+material_color 0
+material_style 0
+material_width 1
+material_termid  
+heat_color 0
+heat_style 2
+heat_width 1
+heat_termid Q
+work_color 0
+work_style 1
+work_width 1
+work_termid W
+connections_color 9
+connections_style 3
+connections_width 1
+connections_termid C
+measurements_color 4
+measurements_style 3
+measurements_width 1
+measurements_termid M
+displayeoconn 0
+displaycalcs 0
+displaytransfers 0
+displaymeas 0
+displaydesignspecs 0
+displaycalccons 0
+displaymeascons 0
+displayothercons 0
+displayeomeas 1
+displayeomeastype 2
+displayothermanipconn 0
+showeoviews 0
+eoautosave 1
+allow_system_userprops 0
+copy_estimation 1
+copy_retrieved 1
+purge_incomp_params 0
+set_default_biparams 0
+set_default_dataset1 0
+set_default_dataset0 1
+bestinput 0
+autosmrun 0
+genallpropset 0
+strmresformdefault 0
+roottype 1
+exchangerfile 1
+streamformat 1
+runsettingfile 1
+usermodelfile 1
+fortranfile 0
+timeout 1000
+auto_evaluate 0
+customglobaldatapropset1 0 | Custom1 | * | %.2f | 0 | 6
+customglobaldatapropset2 0 | Custom2 | * | %.2f | 1 | 7
+customglobaldatapropset3 0 | Custom3 | * | %.2f | 2 | 8
+customglobaldatapropset4 0 | Custom4 | * | %.2f | 4 | 9
+customglobaldatapropset5 0 | Custom5 | * | %.2f | 5 | 10
+customglobaldatapropset6 0 | Custom6 | * | %.2f | 6 | 11
+economics_active 0
+ignoreEOVarNameFixupsOnImport 1
+tpsaupgrade 0
+#
+$_APWNSHELL_SETTINGS
+<FileRootSettings><CaseFileSettings>&lt;CaseFileSettings StreamSummaryFormSettings="&amp;lt;src&amp;gt;&amp;lt;ReferencedPaths /&amp;gt;&amp;lt;ReferencedTemplates /&amp;gt;&amp;lt;/src&amp;gt;" xmlns="clr-namespace:AspenTech.AspenPlus.Infrastructure;assembly=AspenTech.AspenPlus.Infrastructure" /&gt;</CaseFileSettings><CommonShellSettings>&lt;CommonShellSettings xmlns="http://schemas.aspentech.com/xaml/presentation/visualisation/commonshell" xmlns:atapi="clr-namespace:AspenTech.AspenPlus.Infrastructure;assembly=AspenTech.AspenPlus.Infrastructure" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:atapmaa="clr-namespace:AspenTech.AspenPlus.Modules.ApwnApplication;assembly=ApwnShell" xmlns:atapie="clr-namespace:AspenTech.AspenPlus.Infrastructure.Events;assembly=AspenTech.AspenPlus.Infrastructure" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:apmab="clr-namespace:AspenPlus.Modules.ApwnBrowser;assembly=ApwnShell" xmlns:cxv="http://schemas.aspentech.com/xaml/presentation/cxsviewmodel"&gt;&lt;CommonShellSettings.CurrentWorkspace&gt;&lt;ShellWorkspace ActivationBarState="&amp;lt;DashboardPanel IsExpanded=&amp;quot;false&amp;quot; IsTurnedOff=&amp;quot;false&amp;quot; Version=&amp;quot;36&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;Item Type=&amp;quot;AspenTech.ActivationDashboard.EconomicAnalysis.DashboardItem&amp;quot;&amp;gt;&amp;amp;lt;!--This is the current state of Economics Analysis Dashboard--&amp;amp;gt;&amp;#xD;&amp;#xA;&amp;amp;lt;Root&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;OnOffState Value=&amp;quot;Off&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;CapitalCost Value=&amp;quot;&amp;quot; Units=&amp;quot;USD&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;UtilityCost Value=&amp;quot;&amp;quot; Units=&amp;quot;USD/Year&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;HasError&amp;amp;gt;false&amp;amp;lt;/HasError&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;_statusCode Value=&amp;quot;-1&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;StatusText Value=&amp;quot;&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;Flags&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_isRunCompleted Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_isRunning Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_incompleteButActivated Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_incompleteButLoaded Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_incompleteButSized Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_incompleteButMapped Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_completeEvaluatedNotAutoRun Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_isSimulationChanged Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_isInStopping Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_isOnOffButtonCanBeUsed Value=&amp;quot;true&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;    &amp;amp;lt;_isResetDashboardButLeaveItOn Value=&amp;quot;false&amp;quot; /&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;/Flags&amp;amp;gt;&amp;#xD;&amp;#xA;&amp;amp;lt;/Root&amp;amp;gt;&amp;lt;/Item&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;Item Type=&amp;quot;AspenTech.ActivationDashboard.EnergyAnalysis.DashboardItem&amp;quot;&amp;gt;&amp;amp;lt;!--This is the current state of Energy Analysis Dashboard--&amp;amp;gt;&amp;#xD;&amp;#xA;&amp;amp;lt;Root&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;IsExpanded&amp;amp;gt;false&amp;amp;lt;/IsExpanded&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;OnOff&amp;amp;gt;Off&amp;amp;lt;/OnOff&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;Status&amp;amp;gt;InputIncomplete&amp;amp;lt;/Status&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;PUS&amp;amp;gt;&amp;amp;lt;/PUS&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;Percent&amp;amp;gt;&amp;amp;lt;/Percent&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;Units&amp;amp;gt;MW&amp;amp;lt;/Units&amp;amp;gt;&amp;#xD;&amp;#xA;&amp;amp;lt;/Root&amp;amp;gt;&amp;lt;/Item&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;Item Type=&amp;quot;AspenTech.ActivationDashboard.EdrActivation.DashboardItem&amp;quot;&amp;gt;&amp;amp;lt;EDR&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;IsShowModelStatus&amp;amp;gt;false&amp;amp;lt;/IsShowModelStatus&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;IsShowRiskStatus&amp;amp;gt;false&amp;amp;lt;/IsShowRiskStatus&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;IsShowLegend&amp;amp;gt;false&amp;amp;lt;/IsShowLegend&amp;amp;gt;&amp;#xD;&amp;#xA;  &amp;amp;lt;DetailCount&amp;amp;gt;0&amp;amp;lt;/DetailCount&amp;amp;gt;&amp;#xD;&amp;#xA;&amp;amp;lt;/EDR&amp;amp;gt;&amp;lt;/Item&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;/DashboardPanel&amp;gt;" Layout="&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;xamDockManager version=&amp;quot;15.1.20151.2055&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;contentPanes&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;FlowsheetScreenFactory&amp;quot; location=&amp;quot;Document&amp;quot; lastActivatedTime=&amp;quot;2019-08-29T06:47:34.9751972Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;ModelLibraryScreenFactoryKey&amp;quot; location=&amp;quot;DockedBottom&amp;quot; lastActivatedTime=&amp;quot;2019-08-29T06:45:44.278928Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;/contentPanes&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;panes&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;splitPane splitterOrientation=&amp;quot;Vertical&amp;quot; location=&amp;quot;DockedBottom&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;contentPane name=&amp;quot;ModelLibraryScreenFactoryKey&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;/splitPane&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;/panes&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;documents splitterOrientation=&amp;quot;Vertical&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;splitPane splitterOrientation=&amp;quot;Vertical&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;tabGroup selectedIndex=&amp;quot;0&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;FlowsheetScreenFactory&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;/tabGroup&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;/splitPane&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;/documents&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;/xamDockManager&amp;gt;" NavigationGroupToSelect="Simulation" IsNavigationPaneMinimized="False" IsRibbonMinimized="False"&gt;&lt;ShellWorkspace.Screens&gt;&lt;WorkspaceScreenData PaneName="FlowsheetScreenFactory" ScreenFactoryKey="FlowsheetScreenFactory"&gt;&lt;WorkspaceScreenData.ScreenSubject&gt;&lt;atapi:StringScreenSubject subject="{assembly:Null}" fatherNodePath="{assembly:Null}" NavigationGroupKey="Simulation" /&gt;&lt;/WorkspaceScreenData.ScreenSubject&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;ScreenState Zoom="1.500001" /&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;WorkspaceScreenData PaneName="ModelLibraryScreenFactoryKey" ScreenFactoryKey="ModelLibraryScreenFactoryKey"&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;ScreenState /&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;/ShellWorkspace.Screens&gt;&lt;/ShellWorkspace&gt;&lt;/CommonShellSettings.CurrentWorkspace&gt;&lt;CommonShellSettings.SavedWorkspaces&gt;&lt;ShellWorkspaceFolder /&gt;&lt;/CommonShellSettings.SavedWorkspaces&gt;&lt;CommonShellSettings.NavigatorGroupWorkspaces&gt;&lt;ShellWorkspace Name="Properties" Layout="&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;xamDockManager version=&amp;quot;15.1.20151.2055&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;contentPanes&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;contentPane name=&amp;quot;_AnonymousScreen1&amp;quot; location=&amp;quot;Document&amp;quot; lastActivatedTime=&amp;quot;2019-08-29T06:45:17.8861252Z&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;/contentPanes&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;documents splitterOrientation=&amp;quot;Vertical&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;splitPane splitterOrientation=&amp;quot;Vertical&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;tabGroup selectedIndex=&amp;quot;0&amp;quot;&amp;gt;&amp;#xD;&amp;#xA;        &amp;lt;contentPane name=&amp;quot;_AnonymousScreen1&amp;quot; /&amp;gt;&amp;#xD;&amp;#xA;      &amp;lt;/tabGroup&amp;gt;&amp;#xD;&amp;#xA;    &amp;lt;/splitPane&amp;gt;&amp;#xD;&amp;#xA;  &amp;lt;/documents&amp;gt;&amp;#xD;&amp;#xA;&amp;lt;/xamDockManager&amp;gt;" NavigationGroupToSelect="Properties" IsNavigationPaneMinimized="False" IsRibbonMinimized="False"&gt;&lt;ShellWorkspace.Screens&gt;&lt;WorkspaceScreenData PaneName="_AnonymousScreen1" ScreenFactoryKey="ApwnFormContentFactory"&gt;&lt;WorkspaceScreenData.ScreenSubject&gt;&lt;atapmaa:ApwnFormScreenSubject Key="Methods.Parameters.Binary Interaction.NRTL-1" NavigationGroupKey="Properties"&gt;&lt;atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapie:ShowFormEventArgs FormProgId="MMPARAM_BI_COR.MMPARAM_BI_COR_INP" FormKey="Methods.Parameters.Binary Interaction.NRTL-1" Header="Binary Interaction - NRTL-1 (T-DEPENDENT)" ResultsOnly="False" PathKey="Top.appModelV8.Properties.Parameters.Binary Interaction.NRTL-1"&gt;&lt;atapie:ShowFormEventArgs.Parameters&gt;&lt;s:String assembly:Key="id"&gt;NRTL-1&lt;/s:String&gt;&lt;s:String assembly:Key="main"&gt;Top.appModelV8.Properties.Parameters.Binary Interaction.NRTL-1&lt;/s:String&gt;&lt;/atapie:ShowFormEventArgs.Parameters&gt;&lt;/atapie:ShowFormEventArgs&gt;&lt;/atapmaa:ApwnFormScreenSubject.ShowFormArgs&gt;&lt;atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;apmab:ApwnPlotwizardRule ContextPath="Top.appModelV8.Properties.Parameters.Binary Interaction.NRTL-1" /&gt;&lt;/atapmaa:ApwnFormScreenSubject.PlotwizardRule&gt;&lt;/atapmaa:ApwnFormScreenSubject&gt;&lt;/WorkspaceScreenData.ScreenSubject&gt;&lt;WorkspaceScreenData.ScreenState&gt;&lt;atapmaa:ApwnFormScreenState&gt;&lt;atapmaa:ApwnFormScreenState.Parameters&gt;&lt;cxv:CxvParameter Name="main" Value="Top.appModelV8.Properties.Parameters.Binary Interaction.NRTL-1" /&gt;&lt;cxv:CxvParameter Name="id" Value="NRTL-1" /&gt;&lt;cxv:CxvParameter Name="extraComments_path" Value="Comments" /&gt;&lt;cxv:CxvParameter Name="extraDescription_path" Value="Input.DESCRIPTION" /&gt;&lt;cxv:CxvParameter Name="extraUnits_path" Value="Input.Unit Set" /&gt;&lt;cxv:CxvParameter Name="choice" Value="NRTL" /&gt;&lt;cxv:CxvParameter Name="z"&gt;&lt;cxv:CxvParameter.Value&gt;&lt;s:Int32&gt;0&lt;/s:Int32&gt;&lt;/cxv:CxvParameter.Value&gt;&lt;/cxv:CxvParameter&gt;&lt;cxv:CxvParameter Name="y" Value="1" /&gt;&lt;cxv:CxvParameter Name="CmdSearchEnable" Value="1" /&gt;&lt;cxv:CxvParameter Name="CmdReginfoVisible" Value="1" /&gt;&lt;cxv:CxvParameter Name="selected_tab" Value="tab0" /&gt;&lt;/atapmaa:ApwnFormScreenState.Parameters&gt;&lt;/atapmaa:ApwnFormScreenState&gt;&lt;/WorkspaceScreenData.ScreenState&gt;&lt;/WorkspaceScreenData&gt;&lt;/ShellWorkspace.Screens&gt;&lt;/ShellWorkspace&gt;&lt;/CommonShellSettings.NavigatorGroupWorkspaces&gt;&lt;/CommonShellSettings&gt;</CommonShellSettings></FileRootSettings>
+$_END_APWNSHELL_SETTINGS
+#
+PFSVData
+# of PFS Objects = 5
+SIZE -5.29689 0.904936 -1 1
+BLOCK
+ID: B1
+Version: 1
+ICON: "FRACT1"
+Flag 0
+Section GLOBAL
+At -1.300000 0.000000
+Label At -0.800000 0.750000
+Scale 1.000000 Modifier 0
+STREAM
+ID: S1
+Version: 2
+Flag 0
+TYPE 0 TERMINAL 1
+At -5.296891 0.295613
+Label At 0.935946 0.000000
+ROUTE 0 0
+$ $ 0.0 0.0
+ROUTE 1 0
+r r -5.296891 0.295613 0
+x x -3.425000 0.295613 0
+y y -3.425000 0.000000 0
+x x -1.725962 0.000000 0
+t l -1.525962 0.000000 0
+$ C 1.000000 0.0
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 1
+$ $ 0.0 0.0
+ROUTE 1 1
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 2
+$ $ 0.0 0.0
+ROUTE 1 2
+$ $ 0.0 0.0
+STREAM
+ID: S2
+Version: 2
+Flag 0
+TYPE 0 TERMINAL 2
+At 0.796344 0.404205
+Label At -0.410672 0.000000
+ROUTE 0 0
+r l 0.796344 0.404205 0
+x y -0.025000 0.404205 0
+y x -0.025000 0.526154 0
+x 0 -0.652115 0.526154 0
+t r -0.852115 0.526154 0
+$ C 1.000000 0.0
+$ $ 0.0 0.0
+ROUTE 1 0
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 1
+$ $ 0.0 0.0
+ROUTE 1 1
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 2
+$ $ 0.0 0.0
+ROUTE 1 2
+$ $ 0.0 0.0
+STREAM
+ID: S3
+Version: 2
+Flag 0
+TYPE 0 TERMINAL 2
+At 0.904936 -0.295612
+Label At -0.402468 0.000000
+ROUTE 0 0
+r l 0.904936 -0.295612 0
+x y 0.100000 -0.295612 0
+y x 0.100000 -0.826154 0
+x 0 -0.504423 -0.826154 0
+t r -0.704423 -0.826154 0
+$ C 1.000000 0.0
+$ $ 0.0 0.0
+ROUTE 1 0
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 1
+$ $ 0.0 0.0
+ROUTE 1 1
+$ $ 0.0 0.0
+At 0.000000 0.000000
+Label At 0.000000 0.000000
+ROUTE 0 2
+$ $ 0.0 0.0
+ROUTE 1 2
+$ $ 0.0 0.0
+LEGEND
+Version: 2
+Unfixed
+# of PFS Objects = 0
+VIEWPORT -9.845702 9.845702 3.300000 -3.299999
+LAYOUT
+TableFormat 1
+Pages 1 1 1 1
+PAGESETUP
+PAPERSIZE 
+PAPERSOURCE 
+ORIENTATION -1
+PRINTPAGENO 1 1
+LEFTMARGIN 10mm
+RIGHTMARGIN 10mm
+TOPMARGIN 10mm
+BOTTOMMARGIN 10mm
+VISIBILITY 0.030000
+PFDFLAG 255 255
+PFDMODE 0
+SCALE 0.012066
+$_ADS_FILE
+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
+$_END_ADS_FILE

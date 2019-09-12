@@ -1,0 +1,193 @@
+
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + +                                                                         + +
+ + +                      ASPEN PLUS CALCULATION HISTORY                     + +
+ + +                                                                         + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+
+ ASPEN PLUS IS A TRADEMARK OF           HOTLINE:
+ ASPEN TECHNOLOGY, INC.                 U.S.A. 888/996-7100
+ 781/221-6400                           EUROPE (44) 1189-226555
+
+ PLATFORM: WINDOWS                                       AUGUST 29, 2019     
+ VERSION: 36.0   Build 249                               THURSDAY    
+ INSTALLATION:                                           2:56:32 P.M.        
+
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+
+
+      ASPEN PLUS (R) IS A PROPRIETARY PRODUCT OF ASPEN TECHNOLOGY, INC.
+      (ASPENTECH), AND MAY BE USED ONLY UNDER AGREEMENT WITH ASPENTECH.
+      RESTRICTED RIGHTS LEGEND:  USE, REPRODUCTION, OR DISCLOSURE BY THE
+      U.S. GOVERNMENT IS SUBJECT TO RESTRICTIONS SET FORTH IN 
+      (i) FAR 52.227-14, Alt. III, (ii) FAR 52.227-19, (iii) DFARS 
+      252.227-7013(c)(1)(ii), or (iv) THE ACCOMPANYING LICENSE AGREEMENT,
+      AS APPLICABLE. FOR PURPOSES OF THE FAR, THIS SOFTWARE SHALL BE DEEMED
+      TO BE "UNPUBLISHED" AND LICENSED WITH DISCLOSURE PROHIBITIONS.
+      CONTRACTOR/SUBCONTRACTOR: ASPEN TECHNOLOGY, INC. 20 CROSBY DRIVE,
+      BEDFORD, MA 01730.
+ *** INPUT SUMMARY ***
+
+ >>CURRENT RUN
+
+   ORIGINAL RUN                           AUGUST 29, 2019     
+   2:56:32 P.M.                           THURSDAY    
+   INPUT FILE: _4428sin.inm
+   RUN ID : _4428sin
+          1    ;
+          2    ;Input file created by Aspen Plus Rel. 36.0 at 14:56:31 Thu Aug 29, 2019
+          3    ;Directory C:\Users\neetsaki\Documents\AspenTech\Aspen Plus V10.0  Runid SIMULATION 3
+          4    ;
+          5
+          6
+          7    DYNAMICS
+          8        DYNAMICS RESULTS=ON
+          9
+         10    IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         11            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         12
+         13    DEF-STREAMS CONVEN ALL
+         14
+         15    MODEL-OPTION
+         16
+         17    DATABANKS 'APV100 PURE36' / 'APV100 AQUEOUS' / 'APV100 SOLIDS' &
+         18             / 'APV100 INORGANIC' / 'APESV100 AP-EOS' /  &
+         19            'NISTV100 NIST-TRC' / NOASPENPCD
+         20
+         21    PROP-SOURCES 'APV100 PURE36' / 'APV100 AQUEOUS' /  &
+         22            'APV100 SOLIDS' / 'APV100 INORGANIC' / 'APESV100 AP-EOS' &
+         23             / 'NISTV100 NIST-TRC'
+         24
+         25    COMPONENTS
+         26        WATER H2O /
+         27        ETHAN-01 C2H6O-2
+         28
+         29    SOLVE
+         30        RUN-MODE MODE=SIM
+         31
+         32    FLOWSHEET
+         33        BLOCK B2 IN=S1 VAPOR OUT=S2 S3
+         34
+         35    PROPERTIES NRTL
+         36
+         37    PROP-DATA NRTL-1
+         38        IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         39            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         40        PROP-LIST NRTL
+         41        BPVAL WATER ETHAN-01 3.457800000 -586.0809000 .3000000000  &
+         42            0.0 0.0 0.0 24.99000000 100.0000000
+         43        BPVAL ETHAN-01 WATER -.8009000000 246.1800000 .3000000000  &
+         44            0.0 0.0 0.0 24.99000000 100.0000000
+         45
+         46    STREAM S1
+         47        SUBSTREAM MIXED PRES=1.1 VFRAC=0.  &
+         48            MOLE-FLOW=14.46948 <mol/sec>
+         49        MOLE-FRAC WATER 0.884615 / ETHAN-01 0.115385
+         50
+         51    STREAM VAPOR
+         52        SUBSTREAM MIXED PRES=2. <atm> VFRAC=1.  &
+         53            MOLE-FLOW=9.1116698371 <mol/sec>
+         54        MOLE-FRAC WATER 1. / ETHAN-01 0.
+         55
+         56    BLOCK B2 RADFRAC
+         57        PARAM NSTAGE=38 ALGORITHM=NEWTON INIT-OPTION=AZEOTROPIC  &
+         58            MAXOL=25 DAMPING=NONE
+         59        COL-CONFIG CONDENSER=TOTAL REBOILER=NONE
+         60        FEEDS S1 26 / VAPOR 38 ON-STAGE
+         61        PRODUCTS S2 1 L / S3 38 L
+         62        P-SPEC 1 1.04
+         63        COL-SPECS DP-STAGE=667. <Pa> MOLE-D=1.9320349096 <mol/sec>
+         64
+         65    EO-CONV-OPTI
+         66
+         67    STREAM-REPOR MOLEFLOW
+         68    ;
+         69    ;
+         70    ;
+         71    ;
+         72    ;
+ *** INPUT TRANSLATOR MESSAGES ***
+
+  *** THIS RUN USES THE PROPERTIES ENTERPRISE DATABASE ***
+      SQLLOCALDB.APESV100 : (DATAVERSION - 36.0.0.1)                          
+      SQLLOCALDB.APV100 : (DATAVERSION - 36.0.0.21)                           
+      SQLLOCALDB.FACTV100 : (DATAVERSION - 36.0.0.1)                          
+      SQLLOCALDB.NISTV100 : (DATAVERSION - 36.0.0.15)                         
+ 
+ 
+
+ PDF updated                                                                      TIME =      1.30
+
+ *** CALCULATION TRACE ***
+
+
+ *** FLOWSHEET ANALYSIS MESSAGES ***
+
+ FLOWSHEET CONNECTIVITY BY STREAMS       
+
+   STREAM     SOURCE     DEST           STREAM     SOURCE     DEST
+   VAPOR      ----       B2             S1         ----       B2      
+   S2         B2         ----           S3         B2         ----    
+
+ FLOWSHEET CONNECTIVITY BY BLOCKS        
+
+   BLOCK        INLETS                         OUTLETS
+   B2           S1 VAPOR                       S2 S3                       
+
+      COMPUTATION ORDER FOR THE FLOWSHEET IS:
+      B2 
+
+Calculations begin                                                              time      0.05
+
+
+ SIMULATION CALCULATIONS BEGIN                                                    TIME =      0.05
+
+      ENTHALPY CALCULATION FOR INLET STREAM S1 OF BLOCK B2                        TIME =      0.05
+      KODE = 3  NTRIAL =   4  T = 360.7885  P =  110000.      V =  0.00000      Q =  0.00000    
+
+      ENTHALPY CALCULATION FOR INLET STREAM VAPOR OF BLOCK B2                     TIME =      0.05
+      KODE = 3  NTRIAL =   3  T = 393.8392  P =  202650.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =      0.05
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B2" (MODEL: "RADFRAC")    
+                                                               (UDL03A.7260)    
+      FEED PRESSURE  0.11000E+06 (N/SQM) OF STREAM S1                           
+      IS LOWER THAN STAGE  26 PRESSURE  0.12068E+06 (N/SQM).                    
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0     0.12694E+07
+              1     0.11259E+07
+              2     0.93575E+06
+              3     0.12199E+07
+              4     0.13212E+07
+              5     0.13139E+07
+              6     0.47678E+06
+              7     0.26344E+06
+              8     0.15238E+06
+              9      20709.    
+             10      34871.    
+             11      26077.    
+             12      3225.1    
+             13      9.8516    
+             14     0.39683E-04
+
+ Report Writer entered                                                            Time =      0.09
+
+ Results generated                                                                Time =      0.14
+
+RUN SAVED
+
+
+
+ *** SUMMARY OF ERRORS ***
+
+                  PHYSICAL
+                  PROPERTY  SYSTEM  SIMULATION
+ TERMINAL ERRORS      0        0         0
+   SEVERE ERRORS      0        0         0
+          ERRORS      0        0         0
+        WARNINGS      0        0         1

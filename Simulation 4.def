@@ -1,0 +1,10 @@
+INPUT: Simulation 4.inm
+MODNAME: apmain
+RUNID: Simulation 4
+NEW_RUNID: Simulation 4
+OLD_RUNID: Simulation 4
+PDF: Simulation 4.appdf
+USERNAME: neetsaki
+XMOD: d:\AspenTech (x86)\Aspen Plus V10.0\Engine\xeq\apmain
+SPONLY:
+DBCONN: _1349ixl.ads

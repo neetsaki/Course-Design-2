@@ -1,0 +1,790 @@
+
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + +                                                                         + +
+ + +                      ASPEN PLUS CALCULATION HISTORY                     + +
+ + +                                                                         + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+
+ ASPEN PLUS IS A TRADEMARK OF           HOTLINE:
+ ASPEN TECHNOLOGY, INC.                 U.S.A. 888/996-7100
+ 781/221-6400                           EUROPE (44) 1189-226555
+
+ PLATFORM: WINDOWS                                       AUGUST 29, 2019     
+ VERSION: 36.0   Build 249                               THURSDAY    
+ INSTALLATION:                                           2:56:32 P.M.        
+
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+
+
+      ASPEN PLUS (R) IS A PROPRIETARY PRODUCT OF ASPEN TECHNOLOGY, INC.
+      (ASPENTECH), AND MAY BE USED ONLY UNDER AGREEMENT WITH ASPENTECH.
+      RESTRICTED RIGHTS LEGEND:  USE, REPRODUCTION, OR DISCLOSURE BY THE
+      U.S. GOVERNMENT IS SUBJECT TO RESTRICTIONS SET FORTH IN 
+      (i) FAR 52.227-14, Alt. III, (ii) FAR 52.227-19, (iii) DFARS 
+      252.227-7013(c)(1)(ii), or (iv) THE ACCOMPANYING LICENSE AGREEMENT,
+      AS APPLICABLE. FOR PURPOSES OF THE FAR, THIS SOFTWARE SHALL BE DEEMED
+      TO BE "UNPUBLISHED" AND LICENSED WITH DISCLOSURE PROHIBITIONS.
+      CONTRACTOR/SUBCONTRACTOR: ASPEN TECHNOLOGY, INC. 20 CROSBY DRIVE,
+      BEDFORD, MA 01730.
+ *** INPUT SUMMARY ***
+
+ >>CURRENT RUN
+
+   ORIGINAL RUN                           AUGUST 29, 2019     
+   2:56:32 P.M.                           THURSDAY    
+   INPUT FILE: _4428sin.inm
+   RUN ID : _4428sin
+          1    ;
+          2    ;Input file created by Aspen Plus Rel. 36.0 at 14:56:31 Thu Aug 29, 2019
+          3    ;Directory C:\Users\neetsaki\Documents\AspenTech\Aspen Plus V10.0  Runid SIMULATION 3
+          4    ;
+          5
+          6
+          7    DYNAMICS
+          8        DYNAMICS RESULTS=ON
+          9
+         10    IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         11            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         12
+         13    DEF-STREAMS CONVEN ALL
+         14
+         15    MODEL-OPTION
+         16
+         17    DATABANKS 'APV100 PURE36' / 'APV100 AQUEOUS' / 'APV100 SOLIDS' &
+         18             / 'APV100 INORGANIC' / 'APESV100 AP-EOS' /  &
+         19            'NISTV100 NIST-TRC' / NOASPENPCD
+         20
+         21    PROP-SOURCES 'APV100 PURE36' / 'APV100 AQUEOUS' /  &
+         22            'APV100 SOLIDS' / 'APV100 INORGANIC' / 'APESV100 AP-EOS' &
+         23             / 'NISTV100 NIST-TRC'
+         24
+         25    COMPONENTS
+         26        WATER H2O /
+         27        ETHAN-01 C2H6O-2
+         28
+         29    SOLVE
+         30        RUN-MODE MODE=SIM
+         31
+         32    FLOWSHEET
+         33        BLOCK B2 IN=S1 VAPOR OUT=S2 S3
+         34
+         35    PROPERTIES NRTL
+         36
+         37    PROP-DATA NRTL-1
+         38        IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         39            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         40        PROP-LIST NRTL
+         41        BPVAL WATER ETHAN-01 3.457800000 -586.0809000 .3000000000  &
+         42            0.0 0.0 0.0 24.99000000 100.0000000
+         43        BPVAL ETHAN-01 WATER -.8009000000 246.1800000 .3000000000  &
+         44            0.0 0.0 0.0 24.99000000 100.0000000
+         45
+         46    STREAM S1
+         47        SUBSTREAM MIXED PRES=1.1 VFRAC=0.  &
+         48            MOLE-FLOW=14.46948 <mol/sec>
+         49        MOLE-FRAC WATER 0.884615 / ETHAN-01 0.115385
+         50
+         51    STREAM VAPOR
+         52        SUBSTREAM MIXED PRES=2. <atm> VFRAC=1.  &
+         53            MOLE-FLOW=9.1116698371 <mol/sec>
+         54        MOLE-FRAC WATER 1. / ETHAN-01 0.
+         55
+         56    BLOCK B2 RADFRAC
+         57        PARAM NSTAGE=38 ALGORITHM=NEWTON INIT-OPTION=AZEOTROPIC  &
+         58            MAXOL=25 DAMPING=NONE
+         59        COL-CONFIG CONDENSER=TOTAL REBOILER=NONE
+         60        FEEDS S1 26 / VAPOR 38 ON-STAGE
+         61        PRODUCTS S2 1 L / S3 38 L
+         62        P-SPEC 1 1.04
+         63        COL-SPECS DP-STAGE=667. <Pa> MOLE-D=1.9320349096 <mol/sec>
+         64
+         65    EO-CONV-OPTI
+         66
+         67    STREAM-REPOR MOLEFLOW
+         68    ;
+         69    ;
+         70    ;
+         71    ;
+         72    ;
+ *** INPUT TRANSLATOR MESSAGES ***
+
+  *** THIS RUN USES THE PROPERTIES ENTERPRISE DATABASE ***
+      SQLLOCALDB.APESV100 : (DATAVERSION - 36.0.0.1)                          
+      SQLLOCALDB.APV100 : (DATAVERSION - 36.0.0.21)                           
+      SQLLOCALDB.FACTV100 : (DATAVERSION - 36.0.0.1)                          
+      SQLLOCALDB.NISTV100 : (DATAVERSION - 36.0.0.15)                         
+ 
+ 
+
+ PDF updated                                                                      TIME =      1.30
+
+ *** CALCULATION TRACE ***
+
+
+ *** FLOWSHEET ANALYSIS MESSAGES ***
+
+ FLOWSHEET CONNECTIVITY BY STREAMS       
+
+   STREAM     SOURCE     DEST           STREAM     SOURCE     DEST
+   VAPOR      ----       B2             S1         ----       B2      
+   S2         B2         ----           S3         B2         ----    
+
+ FLOWSHEET CONNECTIVITY BY BLOCKS        
+
+   BLOCK        INLETS                         OUTLETS
+   B2           S1 VAPOR                       S2 S3                       
+
+      COMPUTATION ORDER FOR THE FLOWSHEET IS:
+      B2 
+
+Calculations begin                                                              time      0.05
+
+
+ SIMULATION CALCULATIONS BEGIN                                                    TIME =      0.05
+
+      ENTHALPY CALCULATION FOR INLET STREAM S1 OF BLOCK B2                        TIME =      0.05
+      KODE = 3  NTRIAL =   4  T = 360.7885  P =  110000.      V =  0.00000      Q =  0.00000    
+
+      ENTHALPY CALCULATION FOR INLET STREAM VAPOR OF BLOCK B2                     TIME =      0.05
+      KODE = 3  NTRIAL =   3  T = 393.8392  P =  202650.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =      0.05
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B2" (MODEL: "RADFRAC")    
+                                                               (UDL03A.7260)    
+      FEED PRESSURE  0.11000E+06 (N/SQM) OF STREAM S1                           
+      IS LOWER THAN STAGE  26 PRESSURE  0.12068E+06 (N/SQM).                    
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0     0.12694E+07
+              1     0.11259E+07
+              2     0.93575E+06
+              3     0.12199E+07
+              4     0.13212E+07
+              5     0.13139E+07
+              6     0.47678E+06
+              7     0.26344E+06
+              8     0.15238E+06
+              9      20709.    
+             10      34871.    
+             11      26077.    
+             12      3225.1    
+             13      9.8516    
+             14     0.39683E-04
+
+ Report Writer entered                                                            Time =      0.09
+
+ Results generated                                                                Time =      0.14
+
+RUN SAVED
+
+
+
+ *** SUMMARY OF ERRORS ***
+
+                  PHYSICAL
+                  PROPERTY  SYSTEM  SIMULATION
+ TERMINAL ERRORS      0        0         0
+   SEVERE ERRORS      0        0         0
+          ERRORS      0        0         0
+        WARNINGS      0        0         1
+
+RUN SAVED
+
+
+
+ *** SUMMARY OF ERRORS ***
+
+                  PHYSICAL
+                  PROPERTY  SYSTEM  SIMULATION
+ TERMINAL ERRORS      0        0         0
+   SEVERE ERRORS      0        0         0
+          ERRORS      0        0         0
+        WARNINGS      0        0         1
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ SENSITIVITY  S-1      IS NEW 08/29/2019   15:19:22:99 
+ SENSITIVITY S-1
+     DEFINE B MASS-FRAC STREAM=S3 SUBSTREAM=MIXED  &
+         COMPONENT=ETHAN-01
+     DEFINE D MASS-FRAC STREAM=S2 SUBSTREAM=MIXED  &
+         COMPONENT=ETHAN-01
+     TABULATE 1 "B"
+     TABULATE 2 "D"
+     VARY BLOCK-VAR BLOCK=B2 VARIABLE=STAGE SENTENCE=FEEDS  &
+         ID1=S1
+     RANGE OPT-LIST=RANGE LOWER="23" UPPER="34" INCR="1"
+
+ PDF updated                                                                      TIME =   1369.31
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+ 
+ SENSITIVITY BLOCK: S-1 WILL BE INTERPRETED 
+ 
+ *** FLOWSHEET ANALYSIS MESSAGES ***
+
+      COMPUTATION ORDER FOR THE FLOWSHEET IS:
+      S-1 B2 
+      (RETURN S-1) 
+
+
+Calculations begin                                                              time   1369.52
+
+
+ SENSITIVITY BLOCK S-1      ROW     1 EVALUATION BEGINS                           TIME =   1369.52
+      VARY VARIABLES:   23.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1369.55
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      46698.    
+              1      67272.    
+              2     0.27723E+06
+              3      14363.    
+              4      83.331    
+              5     0.20242E-02
+
+ SENSITIVITY BLOCK S-1      ROW     2 EVALUATION BEGINS                           TIME =   1369.57
+      VARY VARIABLES:   24.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1369.57
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      11583.    
+              1      2818.2    
+              2      46.258    
+              3     0.21618E-02
+
+ SENSITIVITY BLOCK S-1      ROW     3 EVALUATION BEGINS                           TIME =   1369.57
+      VARY VARIABLES:   25.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1369.57
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      11664.    
+              1      4037.6    
+              2      101.16    
+              3     0.95403E-02
+
+ SENSITIVITY BLOCK S-1      ROW     4 EVALUATION BEGINS                           TIME =   1369.58
+      VARY VARIABLES:   26.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1369.58
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      11739.    
+              1      6569.8    
+              2      325.76    
+              3     0.11338    
+
+ SENSITIVITY BLOCK S-1      ROW     5 EVALUATION BEGINS                           TIME =   1369.59
+      VARY VARIABLES:   27.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1369.59
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      12027.    
+              1      14688.    
+              2      1908.4    
+              3      5.5497    
+              4     0.18933E-04
+
+ SENSITIVITY BLOCK S-1      ROW     6 EVALUATION BEGINS                           TIME =   1369.60
+      VARY VARIABLES:   28.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1369.60
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      28563.    
+              1      20268.    
+              2      29183.    
+              3      26991.    
+              4      26484.    
+              5      24913.    
+              6      15453.    
+              7      15376.    
+              8      15025.    
+              9      14787.    
+             10      14680.    
+             11      13261.    
+             12      13199.    
+             13      13029.    
+             14      12898.    
+             15      12821.    
+             16      15273.    
+             17      15623.    
+             18      15461.    
+             19      15324.    
+             20      15196.    
+             21      14940.    
+             22      14581.    
+             23      14130.    
+             24      13411.    
+             25      13411.    
+
+  *** SEVERE ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "B2" (MODEL:          
+      "RADFRAC")                                               (UDL03K.3)       
+      MATERIAL AND ENERGY BALANCES FAILED TO CONVERGE: CHECK COL-SPECS          
+      OR SUPPLY BETTER TEMPERATURE AND COMPOSITION ESTIMATES.                   
+
+ SENSITIVITY BLOCK S-1      ROW     7 EVALUATION BEGINS                           TIME =   1369.65
+      VARY VARIABLES:   29.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1369.65
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      33071.    
+              1     0.15799E+06
+              2     0.15401E+06
+              3     0.15729E+06
+              4      53983.    
+              5      5093.7    
+              6      53.318    
+              7     0.70168E-02
+
+ SENSITIVITY BLOCK S-1      ROW     8 EVALUATION BEGINS                           TIME =   1369.66
+      VARY VARIABLES:   30.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1369.66
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      12079.    
+              1      10848.    
+              2      13448.    
+              3     0.15385E+06
+              4      26276.    
+              5      1148.0    
+              6      2.4530    
+              7     0.11284E-04
+
+ SENSITIVITY BLOCK S-1      ROW     9 EVALUATION BEGINS                           TIME =   1369.68
+      VARY VARIABLES:   31.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1369.68
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      12034.    
+              1      10896.    
+              2      12897.    
+              3     0.16502E+06
+              4      29344.    
+              5      1408.7    
+              6      3.6840    
+              7     0.25410E-04
+
+ SENSITIVITY BLOCK S-1      ROW    10 EVALUATION BEGINS                           TIME =   1369.70
+      VARY VARIABLES:   32.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1369.70
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      11946.    
+              1      11115.    
+              2      12642.    
+              3     0.18468E+06
+              4      34503.    
+              5      1889.9    
+              6      6.5592    
+              7     0.79894E-04
+
+ SENSITIVITY BLOCK S-1      ROW    11 EVALUATION BEGINS                           TIME =   1369.71
+      VARY VARIABLES:   33.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1369.71
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      12803.    
+              1      12132.    
+              2      13574.    
+              3      13105.    
+              4     0.14768E+06
+              5      25740.    
+              6      1031.2    
+              7      1.8828    
+              8     0.63122E-05
+
+ SENSITIVITY BLOCK S-1      ROW    12 EVALUATION BEGINS                           TIME =   1369.73
+      VARY VARIABLES:   34.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1369.73
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      12732.    
+              1      13659.    
+              2      13720.    
+              3      13431.    
+              4      13170.    
+              5      12939.    
+              6      14250.    
+              7      96327.    
+              8      10767.    
+              9      170.29    
+             10     0.43573E-01
+
+ SENSITIVITY BLOCK S-1      ROW    13 (BASE CASE) EVALUATION BEGINS               TIME =   1369.75
+      VARY VARIABLES:   26.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1369.75
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0     0.11494E+06
+              1     0.10552E+06
+              2     0.12501E+06
+              3     0.11486E+06
+              4     0.10636E+06
+              5     0.19204E+06
+              6     0.15974E+06
+              7     0.16269E+06
+              8     0.16458E+06
+              9     0.14826E+06
+             10     0.15887E+06
+             11     0.16122E+06
+             12     0.16136E+06
+             13     0.16115E+06
+             14     0.13718E+07
+             15     0.16779E+07
+             16     0.17255E+07
+             17     0.16170E+07
+             18     0.11800E+07
+             19     0.27273E+06
+             20      63628.    
+             21      2201.9    
+             22      3.3215    
+             23     0.11528E-04
+
+  **  ERROR WHILE EXECUTING SENSITIVITY BLOCK: "S-1"           (SNSTVI.4)       
+      SOME ROWS COMPLETED WITH ERRORS.                                          
+
+ Report Writer entered                                                            Time =   1369.81
+
+ Results generated                                                                Time =   1369.87
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ CHANGES WERE MADE TO BLOCK        B2       08/29/2019   15:21:47:14 
+ BLOCK B2 RADFRAC
+     PARAM NSTAGE=38 ALGORITHM=NEWTON INIT-OPTION=AZEOTROPIC  &
+         MAXOL=25 DAMPING=NONE
+     COL-CONFIG CONDENSER=TOTAL REBOILER=NONE
+     FEEDS S1 29 / VAPOR 38 ON-STAGE
+     PRODUCTS S2 1 L / S3 38 L
+     P-SPEC 1 1.04
+     COL-SPECS DP-STAGE=667. <Pa> MOLE-D=1.9320349096 <mol/sec>
+
+ SENSITIVITY  S-1      IS GENERATED BECAUSE OF OTHER CHANGES 08/29/2019   15:21:47:14 
+ SENSITIVITY S-1
+     DEFINE B MASS-FRAC STREAM=S3 SUBSTREAM=MIXED  &
+         COMPONENT=ETHAN-01
+     DEFINE D MASS-FRAC STREAM=S2 SUBSTREAM=MIXED  &
+         COMPONENT=ETHAN-01
+     TABULATE 1 "B"
+     TABULATE 2 "D"
+     VARY BLOCK-VAR BLOCK=B2 VARIABLE=STAGE SENTENCE=FEEDS  &
+         ID1=S1
+     RANGE OPT-LIST=RANGE LOWER="23" UPPER="34" INCR="1"
+
+ PDF updated                                                                      TIME =   1513.47
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+ *** FLOWSHEET ANALYSIS MESSAGES ***
+
+      COMPUTATION ORDER FOR THE FLOWSHEET IS:
+      S-1 B2 
+      (RETURN S-1) 
+
+
+Calculations begin                                                              time   1513.60
+
+
+ SENSITIVITY BLOCK S-1      ROW     1 EVALUATION BEGINS                           TIME =   1513.60
+      VARY VARIABLES:   23.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1513.60
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B2" (MODEL: "RADFRAC")    
+                                                               (UDL03A.7260)    
+      FEED PRESSURE  0.11000E+06 (N/SQM) OF STREAM S1                           
+      IS LOWER THAN STAGE  23 PRESSURE  0.11867E+06 (N/SQM).                    
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      46698.    
+              1      67272.    
+              2     0.27723E+06
+              3      14363.    
+              4      83.331    
+              5     0.20242E-02
+
+ SENSITIVITY BLOCK S-1      ROW     2 EVALUATION BEGINS                           TIME =   1513.61
+      VARY VARIABLES:   24.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1513.61
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      11583.    
+              1      2818.2    
+              2      46.258    
+              3     0.21618E-02
+
+ SENSITIVITY BLOCK S-1      ROW     3 EVALUATION BEGINS                           TIME =   1513.62
+      VARY VARIABLES:   25.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1513.62
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      11664.    
+              1      4037.6    
+              2      101.16    
+              3     0.95403E-02
+
+ SENSITIVITY BLOCK S-1      ROW     4 EVALUATION BEGINS                           TIME =   1513.63
+      VARY VARIABLES:   26.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1513.63
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      11739.    
+              1      6569.8    
+              2      325.76    
+              3     0.11338    
+
+ SENSITIVITY BLOCK S-1      ROW     5 EVALUATION BEGINS                           TIME =   1513.63
+      VARY VARIABLES:   27.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1513.63
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      12027.    
+              1      14688.    
+              2      1908.4    
+              3      5.5497    
+              4     0.18935E-04
+
+ SENSITIVITY BLOCK S-1      ROW     6 EVALUATION BEGINS                           TIME =   1513.64
+      VARY VARIABLES:   28.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1513.64
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      28563.    
+              1      20268.    
+              2      29183.    
+              3      26991.    
+              4      26484.    
+              5      24913.    
+              6      15453.    
+              7      15376.    
+              8      15025.    
+              9      14787.    
+             10      14680.    
+             11      13261.    
+             12      13199.    
+             13      13029.    
+             14      12898.    
+             15      12821.    
+             16      15273.    
+             17      15623.    
+             18      15461.    
+             19      15324.    
+             20      15196.    
+             21      14940.    
+             22      14581.    
+             23      14130.    
+             24      13411.    
+             25      13411.    
+
+  *** SEVERE ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "B2" (MODEL:          
+      "RADFRAC")                                               (UDL03K.3)       
+      MATERIAL AND ENERGY BALANCES FAILED TO CONVERGE: CHECK COL-SPECS          
+      OR SUPPLY BETTER TEMPERATURE AND COMPOSITION ESTIMATES.                   
+
+ SENSITIVITY BLOCK S-1      ROW     7 EVALUATION BEGINS                           TIME =   1513.69
+      VARY VARIABLES:   29.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1513.69
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      33071.    
+              1     0.15799E+06
+              2     0.15401E+06
+              3     0.15729E+06
+              4      53983.    
+              5      5093.7    
+              6      53.318    
+              7     0.70168E-02
+
+ SENSITIVITY BLOCK S-1      ROW     8 EVALUATION BEGINS                           TIME =   1513.71
+      VARY VARIABLES:   30.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1513.71
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      12079.    
+              1      10848.    
+              2      13448.    
+              3     0.15385E+06
+              4      26276.    
+              5      1148.0    
+              6      2.4530    
+              7     0.11285E-04
+
+ SENSITIVITY BLOCK S-1      ROW     9 EVALUATION BEGINS                           TIME =   1513.72
+      VARY VARIABLES:   31.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1513.72
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      12034.    
+              1      10896.    
+              2      12897.    
+              3     0.16502E+06
+              4      29344.    
+              5      1408.7    
+              6      3.6840    
+              7     0.25410E-04
+
+ SENSITIVITY BLOCK S-1      ROW    10 EVALUATION BEGINS                           TIME =   1513.74
+      VARY VARIABLES:   32.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1513.74
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      11946.    
+              1      11115.    
+              2      12642.    
+              3     0.18468E+06
+              4      34503.    
+              5      1889.9    
+              6      6.5592    
+              7     0.79894E-04
+
+ SENSITIVITY BLOCK S-1      ROW    11 EVALUATION BEGINS                           TIME =   1513.75
+      VARY VARIABLES:   33.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1513.75
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      12803.    
+              1      12132.    
+              2      13574.    
+              3      13105.    
+              4     0.14768E+06
+              5      25740.    
+              6      1031.2    
+              7      1.8828    
+              8     0.63130E-05
+
+ SENSITIVITY BLOCK S-1      ROW    12 EVALUATION BEGINS                           TIME =   1513.77
+      VARY VARIABLES:   34.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1513.77
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      12732.    
+              1      13659.    
+              2      13720.    
+              3      13431.    
+              4      13170.    
+              5      12939.    
+              6      14250.    
+              7      96327.    
+              8      10767.    
+              9      170.29    
+             10     0.43573E-01
+
+ SENSITIVITY BLOCK S-1      ROW    13 (BASE CASE) EVALUATION BEGINS               TIME =   1513.79
+      VARY VARIABLES:   29.000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   1513.79
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      67184.    
+              1      66546.    
+              2      64763.    
+              3      62998.    
+              4      63901.    
+              5      60728.    
+              6      56915.    
+              7      55520.    
+              8     0.25301E+06
+              9     0.13314E+06
+             10      60114.    
+             11      9836.8    
+             12      540.60    
+             13      1.6102    
+             14     0.90501E-05
+
+  **  ERROR WHILE EXECUTING SENSITIVITY BLOCK: "S-1"           (SNSTVI.4)       
+      SOME ROWS COMPLETED WITH ERRORS.                                          
+
+ Report Writer entered                                                            Time =   1513.83
+
+ Results generated                                                                Time =   1513.88
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ PROP-TABLE   $MMPURE  IS NEW 08/29/2019   15:31:59:82 
+ PROP-TABLE $MMPURE PROPS
+     IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+     ANALYSIS ANAL-TYPE=PURE PURE-PROP='MU' PURE-PHASES= L
+     MOLE-FLOW ETHAN-01 1 / WATER 1
+     PROPERTIES NRTL FREE-WATER=STEAM-TA SOLU-WATER=3  &
+         TRUE-COMPS=YES
+     VARY TEMP
+     RANGE VARVALUE=RANGE LOWER=0 UPPER=100.0000000 NPOINT=50
+     VARY PRES
+     RANGE LIST=1.013250000
+     PARAM
+
+ OUT-UNITS    IS  NEW 08/29/2019   15:31:59:82 
+ OUT-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+
+ PDF updated                                                                      TIME =   2126.14
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+
+      BEGIN CALCULATIONS FOR PROP-TABLE $MMPURE                                   TIME =   2126.32
+
+RUN SAVED
+
+
+
+ *** SUMMARY OF ERRORS ***
+
+                  PHYSICAL
+                  PROPERTY  SYSTEM  SIMULATION
+ TERMINAL ERRORS      0        0         0
+   SEVERE ERRORS      0        0         2
+          ERRORS      0        0         2
+        WARNINGS      0        0         2

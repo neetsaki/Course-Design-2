@@ -1,0 +1,314 @@
+
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + +                                                                         + +
+ + +                      ASPEN PLUS CALCULATION HISTORY                     + +
+ + +                                                                         + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+
+ ASPEN PLUS IS A TRADEMARK OF           HOTLINE:
+ ASPEN TECHNOLOGY, INC.                 U.S.A. 888/996-7100
+ 781/221-6400                           EUROPE (44) 1189-226555
+
+ PLATFORM: WINDOWS                                       SEPTEMBER 1, 2019   
+ VERSION: 36.0   Build 249                               SUNDAY      
+ INSTALLATION:                                           8:51:24 P.M.        
+
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+
+
+      ASPEN PLUS (R) IS A PROPRIETARY PRODUCT OF ASPEN TECHNOLOGY, INC.
+      (ASPENTECH), AND MAY BE USED ONLY UNDER AGREEMENT WITH ASPENTECH.
+      RESTRICTED RIGHTS LEGEND:  USE, REPRODUCTION, OR DISCLOSURE BY THE
+      U.S. GOVERNMENT IS SUBJECT TO RESTRICTIONS SET FORTH IN 
+      (i) FAR 52.227-14, Alt. III, (ii) FAR 52.227-19, (iii) DFARS 
+      252.227-7013(c)(1)(ii), or (iv) THE ACCOMPANYING LICENSE AGREEMENT,
+      AS APPLICABLE. FOR PURPOSES OF THE FAR, THIS SOFTWARE SHALL BE DEEMED
+      TO BE "UNPUBLISHED" AND LICENSED WITH DISCLOSURE PROHIBITIONS.
+      CONTRACTOR/SUBCONTRACTOR: ASPEN TECHNOLOGY, INC. 20 CROSBY DRIVE,
+      BEDFORD, MA 01730.
+ *** INPUT SUMMARY ***
+
+ >>CURRENT RUN
+
+   ORIGINAL RUN                           SEPTEMBER 1, 2019   
+   8:51:24 P.M.                           SUNDAY      
+   INPUT FILE: _4736yeo.inm
+   RUN ID : _4736yeo
+          1    ;
+          2    ;Input file created by Aspen Plus Rel. 36.0 at 20:51:24 Sun Sep 1, 2019
+          3    ;Directory C:\Users\neetsaki\Desktop\course design2  Runid SIMULATION 7
+          4    ;
+          5
+          6
+          7    DYNAMICS
+          8        DYNAMICS RESULTS=ON
+          9
+         10    IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         11            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         12
+         13    DEF-STREAMS CONVEN ALL
+         14
+         15    MODEL-OPTION
+         16
+         17    DATABANKS 'APV100 PURE36' / 'APV100 AQUEOUS' / 'APV100 SOLIDS' &
+         18             / 'APV100 INORGANIC' / 'APESV100 AP-EOS' /  &
+         19            'NISTV100 NIST-TRC' / NOASPENPCD
+         20
+         21    PROP-SOURCES 'APV100 PURE36' / 'APV100 AQUEOUS' /  &
+         22            'APV100 SOLIDS' / 'APV100 INORGANIC' / 'APESV100 AP-EOS' &
+         23             / 'NISTV100 NIST-TRC'
+         24
+         25    COMPONENTS
+         26        WATER H2O /
+         27        ETHAN-01 C2H6O-2
+         28
+         29    SOLVE
+         30        RUN-MODE MODE=SIM
+         31
+         32    FLOWSHEET
+         33        BLOCK B2 IN=VAPOR F OUT=D B
+         34
+         35    PROPERTIES NRTL
+         36
+         37    PROP-DATA NRTL-1
+         38        IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         39            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         40        PROP-LIST NRTL
+         41        BPVAL WATER ETHAN-01 3.457800000 -586.0809000 .3000000000  &
+         42            0.0 0.0 0.0 24.99000000 100.0000000
+         43        BPVAL ETHAN-01 WATER -.8009000000 246.1800000 .3000000000  &
+         44            0.0 0.0 0.0 24.99000000 100.0000000
+         45
+         46    STREAM F
+         47        SUBSTREAM MIXED PRES=1.23 VFRAC=0.  &
+         48            MOLE-FLOW=14.46948 <mol/sec>
+         49        MOLE-FRAC WATER 0.884615 / ETHAN-01 0.115385
+         50
+         51    STREAM VAPOR
+         52        SUBSTREAM MIXED PRES=2. <atm> VFRAC=1.  &
+         53            MOLE-FLOW=9.1116698371 <mol/sec>
+         54        MOLE-FRAC WATER 1. / ETHAN-01 0.
+         55
+         56    BLOCK B2 RADFRAC
+         57        PARAM NSTAGE=38 ALGORITHM=NEWTON INIT-OPTION=AZEOTROPIC  &
+         58            MAXOL=25 DAMPING=NONE
+         59        COL-CONFIG CONDENSER=TOTAL REBOILER=NONE
+         60        FEEDS VAPOR 38 ON-STAGE / F 29
+         61        PRODUCTS D 1 L / B 38 L
+         62        P-SPEC 1 1.04
+         63        COL-SPECS DP-STAGE=667. <Pa> MOLE-D=1.9320349096 <mol/sec>
+         64
+         65    EO-CONV-OPTI
+         66
+         67    STREAM-REPOR MOLEFLOW
+         68    ;
+         69    ;
+         70    ;
+         71    ;
+         72    ;
+ *** INPUT TRANSLATOR MESSAGES ***
+
+  *** THIS RUN USES THE PROPERTIES ENTERPRISE DATABASE ***
+      SQLLOCALDB.APESV100 : (DATAVERSION - 36.0.0.1)                          
+      SQLLOCALDB.APV100 : (DATAVERSION - 36.0.0.21)                           
+      SQLLOCALDB.FACTV100 : (DATAVERSION - 36.0.0.1)                          
+      SQLLOCALDB.NISTV100 : (DATAVERSION - 36.0.0.15)                         
+ 
+ 
+
+ PDF updated                                                                      TIME =      1.97
+
+ *** CALCULATION TRACE ***
+
+
+ *** FLOWSHEET ANALYSIS MESSAGES ***
+
+ FLOWSHEET CONNECTIVITY BY STREAMS       
+
+   STREAM     SOURCE     DEST           STREAM     SOURCE     DEST
+   F          ----       B2             VAPOR      ----       B2      
+   D          B2         ----           B          B2         ----    
+
+ FLOWSHEET CONNECTIVITY BY BLOCKS        
+
+   BLOCK        INLETS                         OUTLETS
+   B2           VAPOR F                        D B                         
+
+      COMPUTATION ORDER FOR THE FLOWSHEET IS:
+      B2 
+
+Calculations begin                                                              time      0.08
+
+
+ SIMULATION CALCULATIONS BEGIN                                                    TIME =      0.08
+
+      ENTHALPY CALCULATION FOR INLET STREAM VAPOR OF BLOCK B2                     TIME =      0.08
+      KODE = 3  NTRIAL =   3  T = 393.8392  P =  202650.      V =  1.00000      Q =  0.00000    
+
+      ENTHALPY CALCULATION FOR INLET STREAM F OF BLOCK B2                         TIME =      0.08
+      KODE = 3  NTRIAL =   4  T = 363.7372  P =  123000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =      0.08
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0     0.11958E+07
+              1     0.11282E+07
+              2     0.11745E+07
+              3     0.11669E+07
+              4     0.10953E+07
+              5     0.81790E+06
+              6     0.45965E+06
+              7     0.25959E+06
+              8      87473.    
+              9      98429.    
+             10      66922.    
+             11      55251.    
+             12      56601.    
+             13      52435.    
+             14      53484.    
+             15      21494.    
+             16      26510.    
+             17      27428.    
+             18      27448.    
+             19      27355.    
+             20      28285.    
+             21      35383.    
+             22      36881.    
+             23      37141.    
+             24      37161.    
+             25      28285.    
+
+  *** SEVERE ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "B2" (MODEL:          
+      "RADFRAC")                                               (UDL03K.3)       
+      MATERIAL AND ENERGY BALANCES FAILED TO CONVERGE: CHECK COL-SPECS          
+      OR SUPPLY BETTER TEMPERATURE AND COMPOSITION ESTIMATES.                   
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ CHANGES WERE MADE TO STREAM       F        09/01/2019   20:51:36:35 
+ STREAM F
+     SUBSTREAM MIXED PRES=1.1 VFRAC=0.  &
+         MOLE-FLOW=14.46948 <mol/sec>
+     MOLE-FRAC WATER 0.884615 / ETHAN-01 0.115385
+
+ PDF updated                                                                      TIME =      9.68
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+
+
+Calculations begin                                                              time      9.69
+
+
+      ENTHALPY CALCULATION FOR INLET STREAM F OF BLOCK B2                         TIME =      9.69
+      KODE = 3  NTRIAL =   4  T = 360.7885  P =  110000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =      9.69
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B2" (MODEL: "RADFRAC")    
+                                                               (UDL03A.7260)    
+      FEED PRESSURE  0.11000E+06 (N/SQM) OF STREAM F                            
+      IS LOWER THAN STAGE  29 PRESSURE  0.12268E+06 (N/SQM).                    
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      22433.    
+              1      25137.    
+              2      30231.    
+              3      31338.    
+              4      31510.    
+              5      31505.    
+              6      86649.    
+              7      99459.    
+              8      94291.    
+              9     0.10078E+06
+             10      95838.    
+             11      49345.    
+             12      45267.    
+             13      39848.    
+             14      31898.    
+             15      30190.    
+             16      2542.6    
+             17      16.675    
+             18     0.59656E-03
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ CHANGES WERE MADE TO STREAM       F        09/01/2019   20:52:00:50 
+ STREAM F
+     SUBSTREAM MIXED PRES=1.15 VFRAC=0.  &
+         MOLE-FLOW=14.46948 <mol/sec>
+     MOLE-FRAC WATER 0.884615 / ETHAN-01 0.115385
+
+ PDF updated                                                                      TIME =     33.83
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+
+
+Calculations begin                                                              time     33.84
+
+
+      ENTHALPY CALCULATION FOR INLET STREAM F OF BLOCK B2                         TIME =     33.84
+      KODE = 3  NTRIAL =   4  T = 361.9552  P =  115000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =     33.84
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      239.47    
+              1      11779.    
+              2      345.35    
+              3     0.39295    
+              4     0.41595E-06
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ CHANGES WERE MADE TO STREAM       F        09/01/2019   20:52:27:80 
+ STREAM F
+     SUBSTREAM MIXED PRES=1.22009 VFRAC=0.  &
+         MOLE-FLOW=14.46948 <mol/sec>
+     MOLE-FRAC WATER 0.884615 / ETHAN-01 0.115385
+
+ PDF updated                                                                      TIME =     61.13
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+
+
+Calculations begin                                                              time     61.14
+
+
+      ENTHALPY CALCULATION FOR INLET STREAM F OF BLOCK B2                         TIME =     61.14
+      KODE = 3  NTRIAL =   4  T = 363.5217  P =  122009.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =     61.14
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      346.74    
+              1      23917.    
+              2      982.95    
+              3      2.6979    
+              4     0.19482E-04
+
+ Report Writer entered                                                            Time =     75.57
+
+ Results generated                                                                Time =     75.62
+
+ Report Writer entered                                                            Time =     75.94
+
+ Results generated                                                                Time =     75.98
+
+RUN SAVED
+
+
+
+ *** SUMMARY OF ERRORS ***
+
+                  PHYSICAL
+                  PROPERTY  SYSTEM  SIMULATION
+ TERMINAL ERRORS      0        0         0
+   SEVERE ERRORS      0        0         1
+          ERRORS      0        0         0
+        WARNINGS      0        0         1
