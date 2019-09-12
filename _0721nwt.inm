@@ -1,0 +1,19 @@
+;
+;Input file created by Aspen Plus Rel. 36.0 at 20:44:45 Sun Sep 1, 2019
+;Directory C:\Users\neetsaki\Desktop\course design2  Runid SIMULATION 7
+;
+
+
+DYNAMICS
+    DYNAMICS RESULTS=ON
+
+FLOWSHEET 
+    BLOCK B2 IN=VAPOR F OUT=D B 
+
+DELETE
+    BLOCK  LIST = B1 B3 
+;
+;
+;
+;
+;

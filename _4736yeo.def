@@ -1,0 +1,10 @@
+SLAVE:
+INPUT: _4736yeo.inm
+MODNAME: apmain
+RUNID: _4736yeo
+NEW_RUNID: _4736yeo
+OLD_RUNID: _4736yeo
+PDF: _4736yeo.appdf
+USERNAME: neetsaki
+XMOD: d:\AspenTech (x86)\Aspen Plus V10.0\Engine\xeq\apmain
+DBCONN: _4736yeo.ads

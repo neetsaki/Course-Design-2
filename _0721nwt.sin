@@ -1,0 +1,87 @@
+ >>ORIGINAL RUN                           SEPTEMBER 1, 2019   
+   8:44:25 P.M.                           SUNDAY      
+   INPUT FILE: _0721nwt.inm
+   RUN ID : _0721nwt
+          1    ;
+          2    ;Input file created by Aspen Plus Rel. 36.0 at 20:44:24 Sun Sep 1, 2019
+          3    ;Directory C:\Users\neetsaki\Desktop\course design2  Runid SIMULATION 7
+          4    ;
+          5
+          6
+          7    DYNAMICS
+          8        DYNAMICS RESULTS=ON
+          9
+         10    IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         11            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         12
+         13    DEF-STREAMS CONVEN ALL
+         14
+         15    MODEL-OPTION
+         16
+         17    DATABANKS 'APV100 PURE36' / 'APV100 AQUEOUS' / 'APV100 SOLIDS' &
+         18             / 'APV100 INORGANIC' / 'APESV100 AP-EOS' /  &
+         19            'NISTV100 NIST-TRC' / NOASPENPCD
+         20
+         21    PROP-SOURCES 'APV100 PURE36' / 'APV100 AQUEOUS' /  &
+         22            'APV100 SOLIDS' / 'APV100 INORGANIC' / 'APESV100 AP-EOS' &
+         23             / 'NISTV100 NIST-TRC'
+         24
+         25    COMPONENTS
+         26        WATER H2O /
+         27        ETHAN-01 C2H6O-2
+         28
+         29    SOLVE
+         30        RUN-MODE MODE=SIM
+         31
+         32    FLOWSHEET
+         33        BLOCK B2 IN=VAPOR F OUT=D B
+         34        BLOCK B1 IN=D OUT=D-V D-L
+         35        BLOCK B3 IN=B OUT=B-V B-L
+         36
+         37    PROPERTIES NRTL
+         38
+         39    PROP-DATA NRTL-1
+         40        IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         41            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         42        PROP-LIST NRTL
+         43        BPVAL WATER ETHAN-01 3.457800000 -586.0809000 .3000000000  &
+         44            0.0 0.0 0.0 24.99000000 100.0000000
+         45        BPVAL ETHAN-01 WATER -.8009000000 246.1800000 .3000000000  &
+         46            0.0 0.0 0.0 24.99000000 100.0000000
+         47
+         48    STREAM F
+         49        SUBSTREAM MIXED PRES=1.2 VFRAC=0.  &
+         50            MOLE-FLOW=14.46948 <mol/sec>
+         51        MOLE-FRAC WATER 0.884615 / ETHAN-01 0.115385
+         52
+         53    STREAM VAPOR
+         54        SUBSTREAM MIXED PRES=2. <atm> VFRAC=1.  &
+         55            MOLE-FLOW=9.1116698371 <mol/sec>
+         56        MOLE-FRAC WATER 1. / ETHAN-01 0.
+         57
+         58    BLOCK B1 FLASH2
+         59        PARAM PRES=0. VFRAC=1E-006
+         60
+         61    BLOCK B3 FLASH2
+         62        PARAM PRES=0. VFRAC=1E-006
+         63
+         64    BLOCK B2 RADFRAC
+         65        PARAM NSTAGE=38 ALGORITHM=NEWTON INIT-OPTION=AZEOTROPIC  &
+         66            MAXOL=25 DAMPING=NONE
+         67        COL-CONFIG CONDENSER=TOTAL REBOILER=NONE
+         68        FEEDS VAPOR 38 ON-STAGE / F 28
+         69        PRODUCTS D 1 L / B 38 L
+         70        P-SPEC 1 1.04
+         71        COL-SPECS DP-STAGE=667. <Pa> MOLE-D=1.9320349096 <mol/sec>
+         72
+         73    EO-CONV-OPTI
+         74
+         75    STREAM-REPOR MOLEFLOW
+         76    ;
+         77    ;
+         78    ;
+         79    ;
+         80    ;
+
+   SIMULATION STARTED     MODULE USED: apmain  
+   LOCATED IN:d:\AspenTech (x86)\Aspen Plus V10.0\Engine\\xeq

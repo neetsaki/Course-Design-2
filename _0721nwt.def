@@ -1,0 +1,10 @@
+SLAVE:
+INPUT: _0721nwt.inm
+MODNAME: apmain
+RUNID: _0721nwt
+NEW_RUNID: _0721nwt
+OLD_RUNID: _0721nwt
+PDF: _0721nwt.appdf
+USERNAME: neetsaki
+XMOD: d:\AspenTech (x86)\Aspen Plus V10.0\Engine\xeq\apmain
+DBCONN: _0721nwt.ads

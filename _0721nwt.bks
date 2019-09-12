@@ -1,0 +1,7 @@
+ ? SETUP UNITS-SET SET1 ? \ UNITSET BASESET = MET (3 3 3 3 3 3 3 3 3 3 3 3 3 3  
+ 3 3 3 3 3 5 3 4 3 3 3 3 3 3 3 3 4 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3  
+ 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 5 3 3 3 3 3 3 5 3 3 3 3 3 3 3 3 3 3  
+ 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3  
+ 3 3 3 3 3 3 7 3 3 3 3 3 3 3 3) \                                               
+ ? %D BLOCK FLASH2 B1 ? ? %D BLOCK FLASH2 B3 ? ? %M FLOWSHEET GLOBAL ? ;        
+ SET1 ; \ BLOCK BLKID = B2 IN = (VAPOR X F X) OUT = (D X B X) \ "\@"            

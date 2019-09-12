@@ -1,0 +1,10 @@
+SLAVE:
+INPUT: _0131fyv.inm
+MODNAME: apmain
+RUNID: _0131fyv
+NEW_RUNID: _0131fyv
+OLD_RUNID: _0131fyv
+PDF: _0131fyv.appdf
+USERNAME: neetsaki
+XMOD: d:\AspenTech (x86)\Aspen Plus V10.0\Engine\xeq\apmain
+DBCONN: _0131fyv.ads

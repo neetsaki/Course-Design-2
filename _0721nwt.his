@@ -1,0 +1,248 @@
+
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + +                                                                         + +
+ + +                      ASPEN PLUS CALCULATION HISTORY                     + +
+ + +                                                                         + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+
+ ASPEN PLUS IS A TRADEMARK OF           HOTLINE:
+ ASPEN TECHNOLOGY, INC.                 U.S.A. 888/996-7100
+ 781/221-6400                           EUROPE (44) 1189-226555
+
+ PLATFORM: WINDOWS                                       SEPTEMBER 1, 2019   
+ VERSION: 36.0   Build 249                               SUNDAY      
+ INSTALLATION:                                           8:44:25 P.M.        
+
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+
+
+      ASPEN PLUS (R) IS A PROPRIETARY PRODUCT OF ASPEN TECHNOLOGY, INC.
+      (ASPENTECH), AND MAY BE USED ONLY UNDER AGREEMENT WITH ASPENTECH.
+      RESTRICTED RIGHTS LEGEND:  USE, REPRODUCTION, OR DISCLOSURE BY THE
+      U.S. GOVERNMENT IS SUBJECT TO RESTRICTIONS SET FORTH IN 
+      (i) FAR 52.227-14, Alt. III, (ii) FAR 52.227-19, (iii) DFARS 
+      252.227-7013(c)(1)(ii), or (iv) THE ACCOMPANYING LICENSE AGREEMENT,
+      AS APPLICABLE. FOR PURPOSES OF THE FAR, THIS SOFTWARE SHALL BE DEEMED
+      TO BE "UNPUBLISHED" AND LICENSED WITH DISCLOSURE PROHIBITIONS.
+      CONTRACTOR/SUBCONTRACTOR: ASPEN TECHNOLOGY, INC. 20 CROSBY DRIVE,
+      BEDFORD, MA 01730.
+ *** INPUT SUMMARY ***
+
+ >>CURRENT RUN
+
+   ORIGINAL RUN                           SEPTEMBER 1, 2019   
+   8:44:25 P.M.                           SUNDAY      
+   INPUT FILE: _0721nwt.inm
+   RUN ID : _0721nwt
+          1    ;
+          2    ;Input file created by Aspen Plus Rel. 36.0 at 20:44:24 Sun Sep 1, 2019
+          3    ;Directory C:\Users\neetsaki\Desktop\course design2  Runid SIMULATION 7
+          4    ;
+          5
+          6
+          7    DYNAMICS
+          8        DYNAMICS RESULTS=ON
+          9
+         10    IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         11            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         12
+         13    DEF-STREAMS CONVEN ALL
+         14
+         15    MODEL-OPTION
+         16
+         17    DATABANKS 'APV100 PURE36' / 'APV100 AQUEOUS' / 'APV100 SOLIDS' &
+         18             / 'APV100 INORGANIC' / 'APESV100 AP-EOS' /  &
+         19            'NISTV100 NIST-TRC' / NOASPENPCD
+         20
+         21    PROP-SOURCES 'APV100 PURE36' / 'APV100 AQUEOUS' /  &
+         22            'APV100 SOLIDS' / 'APV100 INORGANIC' / 'APESV100 AP-EOS' &
+         23             / 'NISTV100 NIST-TRC'
+         24
+         25    COMPONENTS
+         26        WATER H2O /
+         27        ETHAN-01 C2H6O-2
+         28
+         29    SOLVE
+         30        RUN-MODE MODE=SIM
+         31
+         32    FLOWSHEET
+         33        BLOCK B2 IN=VAPOR F OUT=D B
+         34        BLOCK B1 IN=D OUT=D-V D-L
+         35        BLOCK B3 IN=B OUT=B-V B-L
+         36
+         37    PROPERTIES NRTL
+         38
+         39    PROP-DATA NRTL-1
+         40        IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         41            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         42        PROP-LIST NRTL
+         43        BPVAL WATER ETHAN-01 3.457800000 -586.0809000 .3000000000  &
+         44            0.0 0.0 0.0 24.99000000 100.0000000
+         45        BPVAL ETHAN-01 WATER -.8009000000 246.1800000 .3000000000  &
+         46            0.0 0.0 0.0 24.99000000 100.0000000
+         47
+         48    STREAM F
+         49        SUBSTREAM MIXED PRES=1.2 VFRAC=0.  &
+         50            MOLE-FLOW=14.46948 <mol/sec>
+         51        MOLE-FRAC WATER 0.884615 / ETHAN-01 0.115385
+         52
+         53    STREAM VAPOR
+         54        SUBSTREAM MIXED PRES=2. <atm> VFRAC=1.  &
+         55            MOLE-FLOW=9.1116698371 <mol/sec>
+         56        MOLE-FRAC WATER 1. / ETHAN-01 0.
+         57
+         58    BLOCK B1 FLASH2
+         59        PARAM PRES=0. VFRAC=1E-006
+         60
+         61    BLOCK B3 FLASH2
+         62        PARAM PRES=0. VFRAC=1E-006
+         63
+         64    BLOCK B2 RADFRAC
+         65        PARAM NSTAGE=38 ALGORITHM=NEWTON INIT-OPTION=AZEOTROPIC  &
+         66            MAXOL=25 DAMPING=NONE
+         67        COL-CONFIG CONDENSER=TOTAL REBOILER=NONE
+         68        FEEDS VAPOR 38 ON-STAGE / F 28
+         69        PRODUCTS D 1 L / B 38 L
+         70        P-SPEC 1 1.04
+         71        COL-SPECS DP-STAGE=667. <Pa> MOLE-D=1.9320349096 <mol/sec>
+         72
+         73    EO-CONV-OPTI
+         74
+         75    STREAM-REPOR MOLEFLOW
+         76    ;
+         77    ;
+         78    ;
+         79    ;
+         80    ;
+ *** INPUT TRANSLATOR MESSAGES ***
+
+  *** THIS RUN USES THE PROPERTIES ENTERPRISE DATABASE ***
+      SQLLOCALDB.APESV100 : (DATAVERSION - 36.0.0.1)                          
+      SQLLOCALDB.APV100 : (DATAVERSION - 36.0.0.21)                           
+      SQLLOCALDB.FACTV100 : (DATAVERSION - 36.0.0.1)                          
+      SQLLOCALDB.NISTV100 : (DATAVERSION - 36.0.0.15)                         
+ 
+ 
+
+ PDF updated                                                                      TIME =      2.64
+
+ *** CALCULATION TRACE ***
+
+
+ *** FLOWSHEET ANALYSIS MESSAGES ***
+
+ FLOWSHEET CONNECTIVITY BY STREAMS       
+
+   STREAM     SOURCE     DEST           STREAM     SOURCE     DEST
+   F          ----       B2             VAPOR      ----       B2      
+   D          B2         B1             B          B2         B3      
+   D-V        B1         ----           D-L        B1         ----    
+   B-V        B3         ----           B-L        B3         ----    
+
+ FLOWSHEET CONNECTIVITY BY BLOCKS        
+
+   BLOCK        INLETS                         OUTLETS
+   B2           VAPOR F                        D B                         
+   B1           D                              D-V D-L                     
+   B3           B                              B-V B-L                     
+
+      COMPUTATION ORDER FOR THE FLOWSHEET IS:
+      B2 B1 B3 
+
+Calculations begin                                                              time      0.07
+
+
+ SIMULATION CALCULATIONS BEGIN                                                    TIME =      0.07
+
+      ENTHALPY CALCULATION FOR INLET STREAM VAPOR OF BLOCK B2                     TIME =      0.07
+      KODE = 3  NTRIAL =   3  T = 393.8392  P =  202650.      V =  1.00000      Q =  0.00000    
+
+      ENTHALPY CALCULATION FOR INLET STREAM F OF BLOCK B2                         TIME =      0.07
+      KODE = 3  NTRIAL =   4  T = 363.0805  P =  120000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =      0.07
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B2" (MODEL: "RADFRAC")    
+                                                               (UDL03A.7260)    
+      FEED PRESSURE  0.12000E+06 (N/SQM) OF STREAM F                            
+      IS LOWER THAN STAGE  28 PRESSURE  0.12201E+06 (N/SQM).                    
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0     0.12224E+07
+              1     0.11192E+07
+              2     0.91916E+06
+              3     0.12358E+07
+              4     0.13156E+07
+              5     0.12192E+07
+              6     0.84563E+06
+              7     0.96002E+06
+              8     0.89799E+06
+              9     0.64270E+06
+             10     0.24422E+06
+             11     0.11612E+06
+             12     0.13835E+06
+             13      94668.    
+             14      73364.    
+             15      87327.    
+             16      84757.    
+             17      25797.    
+             18      34719.    
+             19      36161.    
+             20      36244.    
+             21      36146.    
+             22      34676.    
+             23      47697.    
+             24      50259.    
+             25      34676.    
+
+  *** SEVERE ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "B2" (MODEL:          
+      "RADFRAC")                                               (UDL03K.3)       
+      MATERIAL AND ENERGY BALANCES FAILED TO CONVERGE: CHECK COL-SPECS          
+      OR SUPPLY BETTER TEMPERATURE AND COMPOSITION ESTIMATES.                   
+
+      UOS BLOCK B1       MODEL: FLASH2                                            TIME =      0.16
+      KODE = 3  NTRIAL =   3  T = 351.9739  P =  104000.      V = 1.000000E-06  Q = 7.086567E-02
+
+      UOS BLOCK B3       MODEL: FLASH2                                            TIME =      0.16
+      KODE = 3  NTRIAL =   3  T = 380.0098  P =  128679.      V = 1.000000E-06  Q = -21.3562    
+<reset scope>
+<reset scope>
+<reset scope>
+<reset scope>
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ THE FOLLOWING PARAGRAPH(S) WERE DELETED:
+
+ DELETE
+   BLOCK        "B1      " "B3      "
+
+ FLOWSHEET    IS  NEW 09/01/2019   20:44:45:77 
+ FLOWSHEET
+     BLOCK B2 IN=VAPOR F OUT=D B
+
+ PDF updated                                                                      TIME =     18.05
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+ *** FLOWSHEET ANALYSIS MESSAGES ***
+
+ FLOWSHEET CONNECTIVITY BY STREAMS       
+
+   STREAM     SOURCE     DEST           STREAM     SOURCE     DEST
+   F          ----       B2             VAPOR      ----       B2      
+   D          B2         ----           B          B2         ----    
+
+ FLOWSHEET CONNECTIVITY BY BLOCKS        
+
+   BLOCK        INLETS                         OUTLETS
+   B2           VAPOR F                        D B                         
+
+      COMPUTATION ORDER FOR THE FLOWSHEET IS:
+      B2 
+
+
+Calculations begin                                                              time     18.07
+

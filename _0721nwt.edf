@@ -1,0 +1,5 @@
+
+DELETE
+  BLOCK        "B1      " "B3      "
+FLOWSHEET
+    BLOCK B2 IN=VAPOR F OUT=D B

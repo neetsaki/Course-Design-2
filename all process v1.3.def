@@ -1,0 +1,10 @@
+INPUT: all process v1.3.inm
+MODNAME: apmain
+RUNID: all process v1.3
+NEW_RUNID: all process v1.3
+OLD_RUNID: all process v1.3
+PDF: all process v1.3.appdf
+USERNAME: neetsaki
+XMOD: d:\AspenTech (x86)\Aspen Plus V10.0\Engine\xeq\apmain
+SPONLY:
+DBCONN: _1935blt.ads

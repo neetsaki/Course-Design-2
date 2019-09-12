@@ -1,0 +1,1147 @@
+
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + +                                                                         + +
+ + +                      ASPEN PLUS CALCULATION HISTORY                     + +
+ + +                                                                         + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+
+ ASPEN PLUS IS A TRADEMARK OF           HOTLINE:
+ ASPEN TECHNOLOGY, INC.                 U.S.A. 888/996-7100
+ 781/221-6400                           EUROPE (44) 1189-226555
+
+ PLATFORM: WINDOWS                                       SEPTEMBER 9, 2019   
+ VERSION: 36.0   Build 249                               MONDAY      
+ INSTALLATION:                                           11:42:40 A.M.       
+
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+
+
+      ASPEN PLUS (R) IS A PROPRIETARY PRODUCT OF ASPEN TECHNOLOGY, INC.
+      (ASPENTECH), AND MAY BE USED ONLY UNDER AGREEMENT WITH ASPENTECH.
+      RESTRICTED RIGHTS LEGEND:  USE, REPRODUCTION, OR DISCLOSURE BY THE
+      U.S. GOVERNMENT IS SUBJECT TO RESTRICTIONS SET FORTH IN 
+      (i) FAR 52.227-14, Alt. III, (ii) FAR 52.227-19, (iii) DFARS 
+      252.227-7013(c)(1)(ii), or (iv) THE ACCOMPANYING LICENSE AGREEMENT,
+      AS APPLICABLE. FOR PURPOSES OF THE FAR, THIS SOFTWARE SHALL BE DEEMED
+      TO BE "UNPUBLISHED" AND LICENSED WITH DISCLOSURE PROHIBITIONS.
+      CONTRACTOR/SUBCONTRACTOR: ASPEN TECHNOLOGY, INC. 20 CROSBY DRIVE,
+      BEDFORD, MA 01730.
+ *** INPUT SUMMARY ***
+
+ >>CURRENT RUN
+
+   ORIGINAL RUN                           SEPTEMBER 9, 2019   
+   11:42:40 A.M.                          MONDAY      
+   INPUT FILE: _1935blt.inm
+   RUN ID : _1935blt
+          1    ;
+          2    ;Input file created by Aspen Plus Rel. 36.0 at 11:42:36 Mon Sep 9, 2019
+          3    ;Directory C:\Users\neetsaki\Desktop\course design2  Runid ALL PROCESS V1.3
+          4    ;
+          5
+          6
+          7    DYNAMICS
+          8        DYNAMICS RESULTS=ON
+          9
+         10    IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         11            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         12
+         13    DEF-STREAMS CONVEN ALL
+         14
+         15    MODEL-OPTION
+         16
+         17    DATABANKS 'APV100 PURE36' / 'APV100 AQUEOUS' / 'APV100 SOLIDS' &
+         18             / 'APV100 INORGANIC' / 'APESV100 AP-EOS' /  &
+         19            'NISTV100 NIST-TRC' / NOASPENPCD
+         20
+         21    PROP-SOURCES 'APV100 PURE36' / 'APV100 AQUEOUS' /  &
+         22            'APV100 SOLIDS' / 'APV100 INORGANIC' / 'APESV100 AP-EOS' &
+         23             / 'NISTV100 NIST-TRC'
+         24
+         25    COMPONENTS
+         26        WATER H2O /
+         27        ETHAN-01 C2H6O-2
+         28
+         29    SOLVE
+         30        RUN-MODE MODE=SIM
+         31
+         32    FLOWSHEET
+         33        BLOCK B2 IN=3 5 OUT=D 11 8 7
+         34        BLOCK B1 IN=9 OUT=10
+         35        BLOCK B4 IN=D OUT=9 S3
+         36        BLOCK B5 IN=S3 S4 OUT=S6 S5
+         37        BLOCK B3 IN=1 OUT=2
+         38        BLOCK B6 IN=2 OUT=3
+         39        BLOCK B8 IN=4 OUT=5
+         40
+         41    PROPERTIES NRTL
+         42
+         43    PROP-DATA NRTL-1
+         44        IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         45            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         46        PROP-LIST NRTL
+         47        BPVAL WATER ETHAN-01 3.457800000 -586.0809000 .3000000000  &
+         48            0.0 0.0 0.0 24.99000000 100.0000000
+         49        BPVAL ETHAN-01 WATER -.8009000000 246.1800000 .3000000000  &
+         50            0.0 0.0 0.0 24.99000000 100.0000000
+         51
+         52    STREAM 1
+         53        SUBSTREAM MIXED TEMP=25. PRES=1.  &
+         54            MOLE-FLOW=61.807362895 <mol/sec>
+         55        MOLE-FLOW WATER 0.884615 / ETHAN-01 0.115385
+         56
+         57    STREAM 4
+         58        SUBSTREAM MIXED TEMP=120.68921644 PRES=1. <atm>  &
+         59            MOLE-FLOW=38.921115137 <mol/sec>
+         60        MOLE-FRAC WATER 1. / ETHAN-01 0.
+         61
+         62    STREAM S4
+         63        SUBSTREAM MIXED TEMP=25. PRES=1. MASS-FLOW=7114.4
+         64        MASS-FRAC WATER 1.
+         65
+         66    BLOCK B1 HEATER
+         67        PARAM TEMP=40. PRES=1. DPPARMOPT=NO
+         68        UTILITY UTILITY-ID=C-WATER
+         69
+         70    BLOCK B6 HEATER
+         71        PARAM PRES=1.4 VFRAC=0. T-EST=94.075935066 DPPARMOPT=NO
+         72
+         73    BLOCK B5 HEATX
+         74        PARAM T-HOT=40.
+         75        FEEDS HOT=S3 COLD=S4
+         76        OUTLETS-HOT S6
+         77        OUTLETS-COLD S5
+         78        HOT-SIDE DPPARMOPT=NO
+         79        COLD-SIDE DPPARMOPT=NO
+         80        TQ-PARAM CURVE=YES
+         81
+         82    BLOCK B2 RADFRAC
+         83        SUBOBJECTS INTERNALS = CS-1 CS-2
+         84        PARAM NSTAGE=38 ALGORITHM=NEWTON INIT-OPTION=AZEOTROPIC  &
+         85            HYDRAULIC=NO MAXOL=25 DAMPING=NONE
+         86        PARAM2 STATIC-DP=YES
+         87        COL-CONFIG CONDENSER=TOTAL REBOILER=NONE CA-CONFIG=INT-1
+         88        FEEDS 3 28 / 5 38 ON-STAGE
+         89        PRODUCTS D 1 L / 11 38 L
+         90        PSEUDO-STREA 8 1 / 7 1 PHASE=V
+         91        P-SPEC 1 1.04
+         92        COL-SPECS DP-STAGE=667. <Pa> MOLE-D=8.2 <mol/sec>
+         93        REPORT NOHYDRAULIC
+         94        INTERNALS CS-1 STAGE1=2 STAGE2=29 P-UPDATE=NO  &
+         95            TRAYTYPE=FLEX-TO TRAY-SPACE=0.6 DIAM=0.8 WEIR-HT=40. <mm>  &
+         96            NVALVES=46 VALVE-THICK=0.037 <IN> VALVE-LIFT=0.5 <IN>  &
+         97            MAX-ACC-DP=667. <Pa>
+         98        TRAY-SIZE 1 2 29 FLEXI
+         99        INTERNALS CS-2 STAGE1=30 STAGE2=38 P-UPDATE=NO  &
+        100            TRAYTYPE=FLEX-TO TRAY-SPACE=0.6 DIAM=0.8 WEIR-HT=40. <mm>  &
+        101            NVALVES=46 VALVE-THICK=0.037 <IN> VALVE-LIFT=0.5 <IN>  &
+        102            MAX-ACC-DP=667. <Pa>
+        103        TRAY-SIZE 2 30 38 FLEXI
+        104
+        105    BLOCK B3 PUMP
+        106        PARAM DELP=0.4
+        107
+        108    BLOCK B8 COMPR
+        109        PARAM TYPE=ISENTROPIC DELP=1. <atm> SB-MAXIT=30  &
+        110            SB-TOL=0.0001
+        111
+        112    BLOCK B4 DUPL
+        113
+        114    UTILITY C-WATER GENERAL
+        115        COST PRICE=0.
+        116        PARAM UTILITY-TYPE=WATER PRES=1. PRES-OUT=1. TIN=25.  &
+        117            TOUT=30. CALOPT=FLASH
+        118
+        119    EO-CONV-OPTI
+        120
+        121    STREAM-REPOR MOLEFLOW
+        122    ;
+        123    ;
+        124    ;
+        125    ;
+        126    ;
+ *** INPUT TRANSLATOR MESSAGES ***
+
+  *** THIS RUN USES THE PROPERTIES ENTERPRISE DATABASE ***
+      SQLLOCALDB.APESV100 : (DATAVERSION - 36.0.0.1)                          
+      SQLLOCALDB.APV100 : (DATAVERSION - 36.0.0.21)                           
+      SQLLOCALDB.FACTV100 : (DATAVERSION - 36.0.0.1)                          
+      SQLLOCALDB.NISTV100 : (DATAVERSION - 36.0.0.15)                         
+
+  *   WARNING IN THE "STREAM" PARAGRAPH WHICH BEGINS ON LINE 52                 
+      STREAM NAME: 1                                           (STSTRM.29)      
+      COMPONENT MOLE FLOWS OF SUBSTREAM: "MIXED"                                
+      ARE NORMALIZED TO THE TOTAL MOLE FLOW VALUE.                              
+ 
+ 
+
+ PDF updated                                                                      TIME =      3.23
+
+ *** CALCULATION TRACE ***
+
+
+ *** FLOWSHEET ANALYSIS MESSAGES ***
+
+ FLOWSHEET CONNECTIVITY BY STREAMS       
+
+   STREAM     SOURCE     DEST           STREAM     SOURCE     DEST
+   S4         ----       B5             1          ----       B3      
+   4          ----       B8             D          B2         B4      
+   11         B2         ----           8          B2         ----    
+   7          B2         ----           10         B1         ----    
+   9          B4         B1             S3         B4         B5      
+   S6         B5         ----           S5         B5         ----    
+   2          B3         B6             3          B6         B2      
+   5          B8         B2                                           
+
+ FLOWSHEET CONNECTIVITY BY BLOCKS        
+
+   BLOCK        INLETS                         OUTLETS
+   B2           3 5                            D 11 8 7                    
+   B1           9                              10                          
+   B4           D                              9 S3                        
+   B5           S3 S4                          S6 S5                       
+   B3           1                              2                           
+   B6           2                              3                           
+   B8           4                              5                           
+
+      COMPUTATION ORDER FOR THE FLOWSHEET IS:
+      C-WATER B3 B8 B6 B2 B4 B1 B5 
+
+Calculations begin                                                              time      0.04
+
+
+ SIMULATION CALCULATIONS BEGIN                                                    TIME =      0.04
+
+      UTILITY BLOCK C-WATER  MODEL: GENERAL                                       TIME =      0.04
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+      KODE = 3  NTRIAL =   4  T = 372.7724  P =  100000.      V =  0.00000      Q = 5.622911E+06
+      KODE = 2  NTRIAL =   1  T = 303.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+      KODE = 3  NTRIAL =   4  T = 372.7724  P =  100000.      V =  0.00000      Q = 5.247005E+06
+      HEATING/COOLING VALUE    -2.086598D+04 J/KG
+
+      ENTHALPY CALCULATION FOR INLET STREAM 1 OF BLOCK B3                         TIME =      0.04
+      KODE = 2  NTRIAL =   2  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: PUMP                                              TIME =      0.04
+      VOL-FLOW   =  0.1399E-02 , DELTA P    =  0.4000E+05 , PUMP EFF   =  0.3129    
+      FLUID PWR  =   55.97     , BRAKE PWR  =   178.9     , ELEC PWR   =   178.9    
+
+      ENTHALPY CALCULATION FOR INLET STREAM 4 OF BLOCK B8                         TIME =      0.04
+      KODE = 2  NTRIAL =   1  T = 393.8392  P =  101325.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B8       MODEL: COMPR                                             TIME =      0.05
+      OUTLET TEMP =   492.9       OUTLET PRES =  0.2026E+06   INDICATED HP =  0.1336E+06   BRAKE HP =  0.1336E+06
+      ISENTR TEMP =   465.4      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.9617E+05  HP =   5199.    
+
+      UOS BLOCK B6       MODEL: HEATER                                            TIME =      0.06
+      KODE = 3  NTRIAL =   4  T = 367.2259  P =  140000.      V =  0.00000      Q =  361829.    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =      0.06
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0     0.10548E+07
+              1     0.11695E+07
+              2     0.11457E+07
+              3     0.64421E+06
+              4     0.39145E+06
+              5      92321.    
+              6      80993.    
+              7      76847.    
+              8      28431.    
+              9      2746.6    
+             10      6.3603    
+             11     0.22795E-04
+
+      UOS BLOCK B4       MODEL: DUPL                                              TIME =      0.08
+
+      UOS BLOCK B1       MODEL: HEATER                                            TIME =      0.08
+      KODE = 2  NTRIAL =   2  T = 313.1500  P =  100000.      V =  0.00000      Q = -41273.4    
+
+      ENTHALPY CALCULATION FOR INLET STREAM S4 OF BLOCK B5                        TIME =      0.08
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK B5       MODEL: HEATX                                             TIME =      0.08
+      SPECIFICATION: HOT OUTLET TEMP       313.15    
+      FLOW TYPE:     COUNTERCURRENT  
+      HOT:  TIN=  351.97  PIN=0.10400E+06   TOUT=  313.15  POUT=0.10400E+06
+      COLD: TIN=  298.15  PIN=0.10000E+06   TOUT=  303.21  POUT=0.10000E+06
+                              DUTY= 41273.    
+
+      GENERATING RESULTS FOR UOS BLOCK B1       MODEL: HEATER                     TIME =      0.08
+
+      GENERATING RESULTS FOR UOS BLOCK B5       MODEL: HEATX                      TIME =      0.08
+      SPECIFICATION: HOT OUTLET TEMP       313.15    
+      FLOW TYPE:     COUNTERCURRENT  
+      HOT:  TIN=  351.97  PIN=0.10400E+06   TOUT=  313.15  POUT=0.10400E+06
+      COLD: TIN=  298.15  PIN=0.10000E+06   TOUT=  303.21  POUT=0.10000E+06
+      AREA= 1.6955           DUTY= 41273.           FT=1.00000
+
+      BEGIN HEATX TQ-CURVE CALCULATIONS FOR BLOCK B5      
+
+      BEGIN COLD-TQCURVE INLET   
+      NO. TEMP ITER =    5     TEMP =  303.208    
+      KODE = 1  NTRIAL =   2  T = 303.2081  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  302.968    
+      KODE = 1  NTRIAL =   2  T = 302.9677  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  302.727    
+      KODE = 1  NTRIAL =   2  T = 302.7274  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  302.487    
+      KODE = 1  NTRIAL =   2  T = 302.4869  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  302.246    
+      KODE = 1  NTRIAL =   2  T = 302.2464  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  302.006    
+      KODE = 1  NTRIAL =   2  T = 302.0059  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  301.765    
+      KODE = 1  NTRIAL =   2  T = 301.7653  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  301.525    
+      KODE = 1  NTRIAL =   2  T = 301.5246  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  301.284    
+      KODE = 1  NTRIAL =   2  T = 301.2839  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  301.043    
+      KODE = 1  NTRIAL =   2  T = 301.0432  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  300.802    
+      KODE = 1  NTRIAL =   2  T = 300.8024  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  300.562    
+      KODE = 1  NTRIAL =   2  T = 300.5615  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  300.321    
+      KODE = 1  NTRIAL =   2  T = 300.3206  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  300.080    
+      KODE = 1  NTRIAL =   2  T = 300.0796  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  299.839    
+      KODE = 1  NTRIAL =   2  T = 299.8386  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  299.598    
+      KODE = 1  NTRIAL =   2  T = 299.5975  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  299.356    
+      KODE = 1  NTRIAL =   2  T = 299.3564  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  299.115    
+      KODE = 1  NTRIAL =   2  T = 299.1152  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  298.874    
+      KODE = 1  NTRIAL =   2  T = 298.8740  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  298.633    
+      KODE = 1  NTRIAL =   2  T = 298.6327  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  298.391    
+      KODE = 1  NTRIAL =   2  T = 298.3914  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  298.150    
+      KODE = 1  NTRIAL =   2  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+
+      BEGIN HOT-TQCURVE  INLET   
+      NO. TEMP ITER =    1     TEMP =  351.971    
+      KODE = 1  NTRIAL =   2  T = 351.9711  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  350.249    
+      KODE = 1  NTRIAL =   2  T = 350.2486  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  348.514    
+      KODE = 1  NTRIAL =   2  T = 348.5137  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  346.766    
+      KODE = 1  NTRIAL =   2  T = 346.7663  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  345.006    
+      KODE = 1  NTRIAL =   2  T = 345.0063  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  343.234    
+      KODE = 1  NTRIAL =   2  T = 343.2337  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  341.449    
+      KODE = 1  NTRIAL =   2  T = 341.4486  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  339.651    
+      KODE = 1  NTRIAL =   2  T = 339.6507  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  337.840    
+      KODE = 1  NTRIAL =   2  T = 337.8402  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  336.017    
+      KODE = 1  NTRIAL =   2  T = 336.0171  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  334.181    
+      KODE = 1  NTRIAL =   2  T = 334.1812  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  332.333    
+      KODE = 1  NTRIAL =   2  T = 332.3326  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  330.471    
+      KODE = 1  NTRIAL =   2  T = 330.4713  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  328.597    
+      KODE = 1  NTRIAL =   2  T = 328.5973  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  326.711    
+      KODE = 1  NTRIAL =   2  T = 326.7106  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  324.811    
+      KODE = 1  NTRIAL =   2  T = 324.8112  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    4     TEMP =  322.899    
+      KODE = 1  NTRIAL =   2  T = 322.8991  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  320.974    
+      KODE = 1  NTRIAL =   2  T = 320.9744  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  319.037    
+      KODE = 1  NTRIAL =   2  T = 319.0371  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  317.087    
+      KODE = 1  NTRIAL =   2  T = 317.0872  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  315.125    
+      KODE = 1  NTRIAL =   2  T = 315.1248  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  313.150    
+      KODE = 1  NTRIAL =   2  T = 313.1500  P =  104000.      V =  0.00000      Q =  0.00000    
+
+      BEGIN COLD-TQCURVE INLET   
+
+      BEGIN HOT-TQCURVE  INLET   
+      END HEATX TQ-CURVE CALCULATIONS FOR BLOCK B5      
+
+      GENERATING RESULTS FOR UOS BLOCK B3       MODEL: PUMP                       TIME =      0.09
+      KODE = 5  NTRIAL =   4  T = 298.1500  P =  5492.15      V =  0.00000      Q =  0.00000    
+      VOL-FLOW   =  0.1399E-02 , DELTA P    =  0.4000E+05 , PUMP EFF   =  0.3129    
+      FLUID PWR  =   55.97     , BRAKE PWR  =   178.9     , ELEC PWR   =   178.9    
+      NPSH AVAIL =   100.7    
+
+      GENERATING RESULTS FOR UOS BLOCK B6       MODEL: HEATER                     TIME =      0.09
+<reset scope>
+<reset scope>
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ CHANGES WERE MADE TO BLOCK        B2       09/09/2019   11:44:10:59 
+ BLOCK B2 RADFRAC
+     SUBOBJECTS INTERNALS = CS-1 CS-2
+     PARAM NSTAGE=38 ALGORITHM=NEWTON INIT-OPTION=AZEOTROPIC  &
+         HYDRAULIC=NO MAXOL=25 DAMPING=NONE
+     PARAM2 STATIC-DP=YES
+     COL-CONFIG CONDENSER=TOTAL REBOILER=NONE CA-CONFIG=INT-1
+     FEEDS 3 28 / 5 38 ON-STAGE
+     PRODUCTS D 1 L / 11 38 L
+     PSEUDO-STREA 8 1 / 6 1 PHASE=V
+     P-SPEC 1 1.04
+     COL-SPECS DP-STAGE=667. <Pa> MOLE-D=8.2 <mol/sec>
+     REPORT NOHYDRAULIC
+     INTERNALS CS-1 STAGE1=2 STAGE2=29 P-UPDATE=NO  &
+         TRAYTYPE=FLEX-TO TRAY-SPACE=0.6 DIAM=0.8 WEIR-HT=40. <mm>  &
+         NVALVES=46 VALVE-THICK=0.037 <IN> VALVE-LIFT=0.5 <IN>  &
+         MAX-ACC-DP=667. <Pa>
+     TRAY-SIZE 1 2 29 FLEXI
+     INTERNALS CS-2 STAGE1=30 STAGE2=38 P-UPDATE=NO  &
+         TRAYTYPE=FLEX-TO TRAY-SPACE=0.6 DIAM=0.8 WEIR-HT=40. <mm>  &
+         NVALVES=46 VALVE-THICK=0.037 <IN> VALVE-LIFT=0.5 <IN>  &
+         MAX-ACC-DP=667. <Pa>
+     TRAY-SIZE 2 30 38 FLEXI
+
+ RENAME       IS  NEW 09/09/2019   11:44:10:59 
+ RENAME
+     STREAM "7" "6"
+
+ PDF updated                                                                      TIME =     87.02
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+ 
+ 
+
+
+Calculations begin                                                              time     87.06
+
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =     87.06
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0     0.12284E-04
+
+      UOS BLOCK B4       MODEL: DUPL                                              TIME =     87.07
+
+      UOS BLOCK B1       MODEL: HEATER                                            TIME =     87.07
+      KODE = 2  NTRIAL =   2  T = 313.1500  P =  100000.      V =  0.00000      Q = -41273.4    
+
+      UOS BLOCK B5       MODEL: HEATX                                             TIME =     87.07
+      SPECIFICATION: HOT OUTLET TEMP       313.15    
+      FLOW TYPE:     COUNTERCURRENT  
+      HOT:  TIN=  351.97  PIN=0.10400E+06   TOUT=  313.15  POUT=0.10400E+06
+      COLD: TIN=  298.15  PIN=0.10000E+06   TOUT=  303.21  POUT=0.10000E+06
+                              DUTY= 41273.    
+
+      GENERATING RESULTS FOR UOS BLOCK B1       MODEL: HEATER                     TIME =     87.07
+
+      GENERATING RESULTS FOR UOS BLOCK B5       MODEL: HEATX                      TIME =     87.07
+      SPECIFICATION: HOT OUTLET TEMP       313.15    
+      FLOW TYPE:     COUNTERCURRENT  
+      HOT:  TIN=  351.97  PIN=0.10400E+06   TOUT=  313.15  POUT=0.10400E+06
+      COLD: TIN=  298.15  PIN=0.10000E+06   TOUT=  303.21  POUT=0.10000E+06
+      AREA= 1.6955           DUTY= 41273.           FT=1.00000
+
+      BEGIN HEATX TQ-CURVE CALCULATIONS FOR BLOCK B5      
+
+      BEGIN COLD-TQCURVE INLET   
+      NO. TEMP ITER =    5     TEMP =  303.208    
+      KODE = 1  NTRIAL =   2  T = 303.2081  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  302.968    
+      KODE = 1  NTRIAL =   2  T = 302.9677  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  302.727    
+      KODE = 1  NTRIAL =   2  T = 302.7274  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  302.487    
+      KODE = 1  NTRIAL =   2  T = 302.4869  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  302.246    
+      KODE = 1  NTRIAL =   2  T = 302.2464  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  302.006    
+      KODE = 1  NTRIAL =   2  T = 302.0059  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  301.765    
+      KODE = 1  NTRIAL =   2  T = 301.7653  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  301.525    
+      KODE = 1  NTRIAL =   2  T = 301.5246  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  301.284    
+      KODE = 1  NTRIAL =   2  T = 301.2839  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  301.043    
+      KODE = 1  NTRIAL =   2  T = 301.0432  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  300.802    
+      KODE = 1  NTRIAL =   2  T = 300.8024  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  300.562    
+      KODE = 1  NTRIAL =   2  T = 300.5615  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  300.321    
+      KODE = 1  NTRIAL =   2  T = 300.3206  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  300.080    
+      KODE = 1  NTRIAL =   2  T = 300.0796  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  299.839    
+      KODE = 1  NTRIAL =   2  T = 299.8386  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  299.598    
+      KODE = 1  NTRIAL =   2  T = 299.5975  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  299.356    
+      KODE = 1  NTRIAL =   2  T = 299.3564  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  299.115    
+      KODE = 1  NTRIAL =   2  T = 299.1152  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  298.874    
+      KODE = 1  NTRIAL =   2  T = 298.8740  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  298.633    
+      KODE = 1  NTRIAL =   2  T = 298.6327  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  298.391    
+      KODE = 1  NTRIAL =   2  T = 298.3914  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  298.150    
+      KODE = 1  NTRIAL =   2  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+
+      BEGIN HOT-TQCURVE  INLET   
+      NO. TEMP ITER =    1     TEMP =  351.971    
+      KODE = 1  NTRIAL =   2  T = 351.9711  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  350.249    
+      KODE = 1  NTRIAL =   2  T = 350.2486  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  348.514    
+      KODE = 1  NTRIAL =   2  T = 348.5137  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  346.766    
+      KODE = 1  NTRIAL =   2  T = 346.7663  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  345.006    
+      KODE = 1  NTRIAL =   2  T = 345.0063  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  343.234    
+      KODE = 1  NTRIAL =   2  T = 343.2337  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  341.449    
+      KODE = 1  NTRIAL =   2  T = 341.4486  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  339.651    
+      KODE = 1  NTRIAL =   2  T = 339.6507  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  337.840    
+      KODE = 1  NTRIAL =   2  T = 337.8402  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  336.017    
+      KODE = 1  NTRIAL =   2  T = 336.0171  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  334.181    
+      KODE = 1  NTRIAL =   2  T = 334.1812  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  332.333    
+      KODE = 1  NTRIAL =   2  T = 332.3326  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  330.471    
+      KODE = 1  NTRIAL =   2  T = 330.4713  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  328.597    
+      KODE = 1  NTRIAL =   2  T = 328.5973  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  326.711    
+      KODE = 1  NTRIAL =   2  T = 326.7106  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  324.811    
+      KODE = 1  NTRIAL =   2  T = 324.8112  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    4     TEMP =  322.899    
+      KODE = 1  NTRIAL =   2  T = 322.8991  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  320.974    
+      KODE = 1  NTRIAL =   2  T = 320.9744  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  319.037    
+      KODE = 1  NTRIAL =   2  T = 319.0371  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  317.087    
+      KODE = 1  NTRIAL =   2  T = 317.0872  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  315.125    
+      KODE = 1  NTRIAL =   2  T = 315.1248  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  313.150    
+      KODE = 1  NTRIAL =   2  T = 313.1500  P =  104000.      V =  0.00000      Q =  0.00000    
+
+      BEGIN COLD-TQCURVE INLET   
+
+      BEGIN HOT-TQCURVE  INLET   
+      END HEATX TQ-CURVE CALCULATIONS FOR BLOCK B5      
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ CHANGES WERE MADE TO BLOCK        B2       09/09/2019   11:45:15:11 
+ BLOCK B2 RADFRAC
+     SUBOBJECTS INTERNALS = CS-1 CS-2
+     PARAM NSTAGE=38 ALGORITHM=NEWTON INIT-OPTION=AZEOTROPIC  &
+         HYDRAULIC=NO MAXOL=25 DAMPING=NONE
+     PARAM2 STATIC-DP=YES
+     COL-CONFIG CONDENSER=TOTAL REBOILER=NONE CA-CONFIG=INT-1
+     FEEDS 3 28 / 5 38 ON-STAGE
+     PRODUCTS D 1 L / 11 38 L
+     PSEUDO-STREA 8 1 / 6 2 PHASE=V
+     P-SPEC 1 1.04
+     COL-SPECS DP-STAGE=667. <Pa> MOLE-D=8.2 <mol/sec>
+     REPORT NOHYDRAULIC
+     INTERNALS CS-1 STAGE1=2 STAGE2=29 P-UPDATE=NO  &
+         TRAYTYPE=FLEX-TO TRAY-SPACE=0.6 DIAM=0.8 WEIR-HT=40. <mm>  &
+         NVALVES=46 VALVE-THICK=0.037 <IN> VALVE-LIFT=0.5 <IN>  &
+         MAX-ACC-DP=667. <Pa>
+     TRAY-SIZE 1 2 29 FLEXI
+     INTERNALS CS-2 STAGE1=30 STAGE2=38 P-UPDATE=NO  &
+         TRAYTYPE=FLEX-TO TRAY-SPACE=0.6 DIAM=0.8 WEIR-HT=40. <mm>  &
+         NVALVES=46 VALVE-THICK=0.037 <IN> VALVE-LIFT=0.5 <IN>  &
+         MAX-ACC-DP=667. <Pa>
+     TRAY-SIZE 2 30 38 FLEXI
+
+ FLOWSHEET    IS  NEW 09/09/2019   11:45:15:11 
+ FLOWSHEET
+     BLOCK B2 IN=3 5 OUT=D 11 8 6
+     BLOCK B1 IN=9 OUT=10
+     BLOCK B4 IN=D OUT=9 S3
+     BLOCK B5 IN=S3 S4 OUT=S6 S5
+     BLOCK B3 IN=1 OUT=2
+     BLOCK B6 IN=2 OUT=3
+     BLOCK B8 IN=4 OUT=5
+
+ PDF updated                                                                      TIME =    151.53
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+ 
+ 
+
+
+Calculations begin                                                              time    151.58
+
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =    151.58
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0     0.12284E-04
+
+      UOS BLOCK B4       MODEL: DUPL                                              TIME =    151.58
+
+      UOS BLOCK B1       MODEL: HEATER                                            TIME =    151.58
+      KODE = 2  NTRIAL =   2  T = 313.1500  P =  100000.      V =  0.00000      Q = -41273.4    
+
+      UOS BLOCK B5       MODEL: HEATX                                             TIME =    151.58
+      SPECIFICATION: HOT OUTLET TEMP       313.15    
+      FLOW TYPE:     COUNTERCURRENT  
+      HOT:  TIN=  351.97  PIN=0.10400E+06   TOUT=  313.15  POUT=0.10400E+06
+      COLD: TIN=  298.15  PIN=0.10000E+06   TOUT=  303.21  POUT=0.10000E+06
+                              DUTY= 41273.    
+
+      GENERATING RESULTS FOR UOS BLOCK B1       MODEL: HEATER                     TIME =    151.58
+
+      GENERATING RESULTS FOR UOS BLOCK B5       MODEL: HEATX                      TIME =    151.58
+      SPECIFICATION: HOT OUTLET TEMP       313.15    
+      FLOW TYPE:     COUNTERCURRENT  
+      HOT:  TIN=  351.97  PIN=0.10400E+06   TOUT=  313.15  POUT=0.10400E+06
+      COLD: TIN=  298.15  PIN=0.10000E+06   TOUT=  303.21  POUT=0.10000E+06
+      AREA= 1.6955           DUTY= 41273.           FT=1.00000
+
+      BEGIN HEATX TQ-CURVE CALCULATIONS FOR BLOCK B5      
+
+      BEGIN COLD-TQCURVE INLET   
+      NO. TEMP ITER =    5     TEMP =  303.208    
+      KODE = 1  NTRIAL =   2  T = 303.2081  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  302.968    
+      KODE = 1  NTRIAL =   2  T = 302.9677  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  302.727    
+      KODE = 1  NTRIAL =   2  T = 302.7274  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  302.487    
+      KODE = 1  NTRIAL =   2  T = 302.4869  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  302.246    
+      KODE = 1  NTRIAL =   2  T = 302.2464  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  302.006    
+      KODE = 1  NTRIAL =   2  T = 302.0059  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  301.765    
+      KODE = 1  NTRIAL =   2  T = 301.7653  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  301.525    
+      KODE = 1  NTRIAL =   2  T = 301.5246  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  301.284    
+      KODE = 1  NTRIAL =   2  T = 301.2839  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  301.043    
+      KODE = 1  NTRIAL =   2  T = 301.0432  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  300.802    
+      KODE = 1  NTRIAL =   2  T = 300.8024  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  300.562    
+      KODE = 1  NTRIAL =   2  T = 300.5615  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  300.321    
+      KODE = 1  NTRIAL =   2  T = 300.3206  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  300.080    
+      KODE = 1  NTRIAL =   2  T = 300.0796  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  299.839    
+      KODE = 1  NTRIAL =   2  T = 299.8386  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  299.598    
+      KODE = 1  NTRIAL =   2  T = 299.5975  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  299.356    
+      KODE = 1  NTRIAL =   2  T = 299.3564  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  299.115    
+      KODE = 1  NTRIAL =   2  T = 299.1152  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  298.874    
+      KODE = 1  NTRIAL =   2  T = 298.8740  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  298.633    
+      KODE = 1  NTRIAL =   2  T = 298.6327  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  298.391    
+      KODE = 1  NTRIAL =   2  T = 298.3914  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  298.150    
+      KODE = 1  NTRIAL =   2  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+
+      BEGIN HOT-TQCURVE  INLET   
+      NO. TEMP ITER =    1     TEMP =  351.971    
+      KODE = 1  NTRIAL =   2  T = 351.9711  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  350.249    
+      KODE = 1  NTRIAL =   2  T = 350.2486  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  348.514    
+      KODE = 1  NTRIAL =   2  T = 348.5137  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  346.766    
+      KODE = 1  NTRIAL =   2  T = 346.7663  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  345.006    
+      KODE = 1  NTRIAL =   2  T = 345.0063  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  343.234    
+      KODE = 1  NTRIAL =   2  T = 343.2337  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  341.449    
+      KODE = 1  NTRIAL =   2  T = 341.4486  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  339.651    
+      KODE = 1  NTRIAL =   2  T = 339.6507  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  337.840    
+      KODE = 1  NTRIAL =   2  T = 337.8402  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  336.017    
+      KODE = 1  NTRIAL =   2  T = 336.0171  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  334.181    
+      KODE = 1  NTRIAL =   2  T = 334.1812  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  332.333    
+      KODE = 1  NTRIAL =   2  T = 332.3326  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  330.471    
+      KODE = 1  NTRIAL =   2  T = 330.4713  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  328.597    
+      KODE = 1  NTRIAL =   2  T = 328.5973  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  326.711    
+      KODE = 1  NTRIAL =   2  T = 326.7106  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  324.811    
+      KODE = 1  NTRIAL =   2  T = 324.8112  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    4     TEMP =  322.899    
+      KODE = 1  NTRIAL =   2  T = 322.8991  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  320.974    
+      KODE = 1  NTRIAL =   2  T = 320.9744  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  319.037    
+      KODE = 1  NTRIAL =   2  T = 319.0371  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  317.087    
+      KODE = 1  NTRIAL =   2  T = 317.0872  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  315.125    
+      KODE = 1  NTRIAL =   2  T = 315.1248  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  313.150    
+      KODE = 1  NTRIAL =   2  T = 313.1500  P =  104000.      V =  0.00000      Q =  0.00000    
+
+      BEGIN COLD-TQCURVE INLET   
+
+      BEGIN HOT-TQCURVE  INLET   
+      END HEATX TQ-CURVE CALCULATIONS FOR BLOCK B5      
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ CHANGES WERE MADE TO STREAM       4        09/09/2019   11:51:43:28 
+ STREAM 4
+     SUBSTREAM MIXED TEMP=100. PRES=1. <atm>  &
+         MOLE-FLOW=38.921115137 <mol/sec>
+     MOLE-FRAC WATER 1. / ETHAN-01 0.
+
+ PDF updated                                                                      TIME =    539.71
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+ 
+ 
+
+
+Calculations begin                                                              time    539.72
+
+
+      ENTHALPY CALCULATION FOR INLET STREAM 4 OF BLOCK B8                         TIME =    539.72
+      KODE = 2  NTRIAL =   1  T = 373.1500  P =  101325.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK B8       MODEL: COMPR                                             TIME =    539.72
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B8" (MODEL: "COMPR")      
+                                                               (CMSTIN.8)       
+      FEED STREAM IS BELOW DEW POINT AND "VALID PHASES" IS NOT SPECIFIED.       
+      TWO PHASES FLASH IS USED TO DETERMINE FEED STREAM PROPERTIES.             
+
+  *** SEVERE ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "B8" (MODEL: "COMPR") 
+                                                               (CMRIGI.21)      
+      CANNOT FIND TEMP FOR ISENTROPIC COMPRESSOR/TURBINE.                       
+      ERROR IN ENTROPY =    4269.1                                              
+      A POSSIBLE REASON IS THE EXISTENCE OF A LIQUID PHASE.                     
+      SPECIFY "VALID PHASES" WHICH ALLOWS TWO OR THREE PHASES CALCULATION.      
+      OUTLET TEMP =  0.1000E+36   OUTLET PRES =  0.2026E+06   INDICATED HP =  0.1745E+07   BRAKE HP =  0.1745E+07
+      ISENTR TEMP =   10.00      CALC ISENTR EFF =  0.1000E+36  ISENTR HP =  0.1090E+08  HP =   5199.    
+ 
+      SKIPPING REST OF THE BLOCK CALCULATIONS DUE TO INPUT ERRORS.
+      INLET IS COPIED TO OUTLET.
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "B8" (MODEL: "COMPR")        
+                                                               (UPC02I.3)       
+      LIQUID PHASE EXISTS EITHER AT OUTLET CONDITIONS OR                        
+      AT SOME INTERMEDIATE CONDITIONS. SPECIFY "VALID PHASES"                   
+      WHICH ALLOWS TWO OR THREE PHASES CALCULATION.                             
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =    539.72
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B2" (MODEL: "RADFRAC")    
+                                                               (UDL03A.7260)    
+      FEED PRESSURE  0.10132E+06 (N/SQM) OF STREAM 5                            
+      IS LOWER THAN STAGE  38 PRESSURE  0.12868E+06 (N/SQM).                    
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0     0.11038E+06
+              1     0.11038E+06
+              2     0.11038E+06
+              3     0.11038E+06
+              4     0.11038E+06
+              5     0.11038E+06
+              6     0.12969E+07
+              7     0.12943E+07
+              8     0.12936E+07
+              9     0.12913E+07
+             10     0.12889E+07
+             11     0.80007E+06
+             12     0.79969E+06
+             13     0.79998E+06
+             14     0.80023E+06
+             15     0.79996E+06
+             16     0.80009E+06
+             17     0.79645E+06
+             18     0.79684E+06
+             19     0.79687E+06
+             20     0.79678E+06
+             21     0.79773E+06
+             22     0.79824E+06
+             23     0.79849E+06
+             24     0.79858E+06
+             25     0.79773E+06
+
+  *** SEVERE ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "B2" (MODEL:          
+      "RADFRAC")                                               (UDL03K.3)       
+      MATERIAL AND ENERGY BALANCES FAILED TO CONVERGE: CHECK COL-SPECS          
+      OR SUPPLY BETTER TEMPERATURE AND COMPOSITION ESTIMATES.                   
+
+  *** SEVERE ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "B2" (MODEL:          
+      "RADFRAC")                                               (UDL03K.4)       
+      THE FOLLOWING STAGES DRIED UP:                                            
+        1    2    3    4    5    6    7    8    9   10   11   12   13   14      
+ 15   16   17   18   19   20   21   22   23   24   25   26   27                 
+      A LIMIT OF  0.10000E-04 * SUM OF FEEDS WAS IMPOSED ON THE FLOW RATES.     
+
+
+  **  ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "B2" (MODEL: "RADFRAC")      
+                                                               (BALMAS.1)       
+      BLOCK B2 IS NOT IN MASS BALANCE:                                          
+      MASS INLET FLOW = 0.20147211E+01, MASS OUTLET FLOW = 0.25375083E+01       
+      RELATIVE DIFFERENCE = 0.25948363E+00                                      
+
+  *** SEVERE ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "B2" (MODEL:          
+      "RADFRAC")                                               (FPEPRT.1)       
+      FORTRAN DIVIDE BY ZERO ENCOUNTERED.                                       
+
+      UOS BLOCK B4       MODEL: DUPL                                              TIME =    539.77
+
+      UOS BLOCK B1       MODEL: HEATER                                            TIME =    539.77
+      KODE = 2  NTRIAL =   2  T = 313.1500  P =  100000.      V =  0.00000      Q = -93257.6    
+
+      UOS BLOCK B5       MODEL: HEATX                                             TIME =    539.77
+      SPECIFICATION: HOT OUTLET TEMP       313.15    
+      FLOW TYPE:     COUNTERCURRENT  
+      HOT:  TIN=  351.97  PIN=0.10400E+06   TOUT=  313.15  POUT=0.10400E+06
+      COLD: TIN=  298.15  PIN=0.10000E+06   TOUT=  309.54  POUT=0.10000E+06
+                              DUTY= 93258.    
+
+      GENERATING RESULTS FOR UOS BLOCK B1       MODEL: HEATER                     TIME =    539.77
+
+      GENERATING RESULTS FOR UOS BLOCK B5       MODEL: HEATX                      TIME =    539.77
+      SPECIFICATION: HOT OUTLET TEMP       313.15    
+      FLOW TYPE:     COUNTERCURRENT  
+      HOT:  TIN=  351.97  PIN=0.10400E+06   TOUT=  313.15  POUT=0.10400E+06
+      COLD: TIN=  298.15  PIN=0.10000E+06   TOUT=  309.54  POUT=0.10000E+06
+      AREA= 4.1591           DUTY= 93258.           FT=1.00000
+
+      BEGIN HEATX TQ-CURVE CALCULATIONS FOR BLOCK B5      
+
+      BEGIN COLD-TQCURVE INLET   
+      NO. TEMP ITER =    5     TEMP =  309.544    
+      KODE = 1  NTRIAL =   2  T = 309.5445  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  309.005    
+      KODE = 1  NTRIAL =   2  T = 309.0047  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  308.465    
+      KODE = 1  NTRIAL =   2  T = 308.4647  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  307.924    
+      KODE = 1  NTRIAL =   2  T = 307.9243  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  307.384    
+      KODE = 1  NTRIAL =   2  T = 307.3837  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  306.843    
+      KODE = 1  NTRIAL =   2  T = 306.8428  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  306.302    
+      KODE = 1  NTRIAL =   2  T = 306.3016  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  305.760    
+      KODE = 1  NTRIAL =   2  T = 305.7601  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  305.218    
+      KODE = 1  NTRIAL =   2  T = 305.2183  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  304.676    
+      KODE = 1  NTRIAL =   2  T = 304.6763  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  304.134    
+      KODE = 1  NTRIAL =   2  T = 304.1339  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  303.591    
+      KODE = 1  NTRIAL =   2  T = 303.5913  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  303.048    
+      KODE = 1  NTRIAL =   2  T = 303.0484  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  302.505    
+      KODE = 1  NTRIAL =   2  T = 302.5052  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  301.962    
+      KODE = 1  NTRIAL =   2  T = 301.9618  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  301.418    
+      KODE = 1  NTRIAL =   2  T = 301.4180  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  300.874    
+      KODE = 1  NTRIAL =   2  T = 300.8740  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  300.330    
+      KODE = 1  NTRIAL =   2  T = 300.3298  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  299.785    
+      KODE = 1  NTRIAL =   2  T = 299.7852  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  299.240    
+      KODE = 1  NTRIAL =   2  T = 299.2404  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  298.695    
+      KODE = 1  NTRIAL =   2  T = 298.6953  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  298.150    
+      KODE = 1  NTRIAL =   2  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+
+      BEGIN HOT-TQCURVE  INLET   
+      NO. TEMP ITER =    5     TEMP =  351.973    
+      KODE = 1  NTRIAL =   2  T = 351.9725  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  350.221    
+      KODE = 1  NTRIAL =   2  T = 350.2206  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  348.459    
+      KODE = 1  NTRIAL =   2  T = 348.4588  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  346.687    
+      KODE = 1  NTRIAL =   2  T = 346.6871  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  344.905    
+      KODE = 1  NTRIAL =   2  T = 344.9055  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  343.114    
+      KODE = 1  NTRIAL =   2  T = 343.1140  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  341.313    
+      KODE = 1  NTRIAL =   2  T = 341.3127  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  339.502    
+      KODE = 1  NTRIAL =   2  T = 339.5017  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  337.681    
+      KODE = 1  NTRIAL =   2  T = 337.6809  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  335.850    
+      KODE = 1  NTRIAL =   2  T = 335.8504  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  334.010    
+      KODE = 1  NTRIAL =   2  T = 334.0102  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  332.160    
+      KODE = 1  NTRIAL =   2  T = 332.1605  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  330.301    
+      KODE = 1  NTRIAL =   2  T = 330.3012  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  328.432    
+      KODE = 1  NTRIAL =   2  T = 328.4324  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  326.554    
+      KODE = 1  NTRIAL =   2  T = 326.5542  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    4     TEMP =  324.667    
+      KODE = 1  NTRIAL =   2  T = 324.6667  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    4     TEMP =  322.770    
+      KODE = 1  NTRIAL =   2  T = 322.7699  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  320.864    
+      KODE = 1  NTRIAL =   2  T = 320.8639  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  318.949    
+      KODE = 1  NTRIAL =   2  T = 318.9489  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  317.025    
+      KODE = 1  NTRIAL =   2  T = 317.0248  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  315.092    
+      KODE = 1  NTRIAL =   2  T = 315.0918  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  313.150    
+      KODE = 1  NTRIAL =   2  T = 313.1500  P =  104000.      V =  0.00000      Q =  0.00000    
+
+      BEGIN COLD-TQCURVE INLET   
+
+      BEGIN HOT-TQCURVE  INLET   
+      END HEATX TQ-CURVE CALCULATIONS FOR BLOCK B5      
+      STREAM 5 WILL BE FLASHED FOR PROPERTY CALCULATIONS.
+      KODE = 1   NO. TEMP ITER =    3     TEMP =  373.150    
+      KPHASE =    2 KODE =    1 T =  373.150     P =  101325.     Q =  0.00000    
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ CHANGES WERE MADE TO STREAM       4        09/09/2019   11:52:42:76 
+ STREAM 4
+     SUBSTREAM MIXED PRES=1. <atm> VFRAC=1.  &
+         MOLE-FLOW=38.921115137 <mol/sec>
+     MOLE-FRAC WATER 1. / ETHAN-01 0.
+
+ PDF updated                                                                      TIME =    599.18
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+
+
+Calculations begin                                                              time    599.20
+
+
+      ENTHALPY CALCULATION FOR INLET STREAM 4 OF BLOCK B8                         TIME =    599.20
+      KODE = 3  NTRIAL =   4  T = 373.1678  P =  101325.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B8       MODEL: COMPR                                             TIME =    599.20
+      OUTLET TEMP =   467.6       OUTLET PRES =  0.2026E+06   INDICATED HP =  0.1266E+06   BRAKE HP =  0.1266E+06
+      ISENTR TEMP =   441.4      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.9117E+05  HP =   4928.    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =    599.20
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0     0.76096E+06
+              1     0.63256E+06
+              2      40554.    
+              3      23887.    
+              4      41936.    
+              5      16708.    
+              6      687.75    
+              7     0.29460    
+
+      UOS BLOCK B4       MODEL: DUPL                                              TIME =    599.21
+
+      UOS BLOCK B1       MODEL: HEATER                                            TIME =    599.21
+      KODE = 2  NTRIAL =   2  T = 313.1500  P =  100000.      V =  0.00000      Q = -41261.8    
+
+      UOS BLOCK B5       MODEL: HEATX                                             TIME =    599.21
+      SPECIFICATION: HOT OUTLET TEMP       313.15    
+      FLOW TYPE:     COUNTERCURRENT  
+      HOT:  TIN=  351.97  PIN=0.10400E+06   TOUT=  313.15  POUT=0.10400E+06
+      COLD: TIN=  298.15  PIN=0.10000E+06   TOUT=  303.21  POUT=0.10000E+06
+                              DUTY= 41262.    
+
+      GENERATING RESULTS FOR UOS BLOCK B1       MODEL: HEATER                     TIME =    599.21
+
+      GENERATING RESULTS FOR UOS BLOCK B5       MODEL: HEATX                      TIME =    599.21
+      SPECIFICATION: HOT OUTLET TEMP       313.15    
+      FLOW TYPE:     COUNTERCURRENT  
+      HOT:  TIN=  351.97  PIN=0.10400E+06   TOUT=  313.15  POUT=0.10400E+06
+      COLD: TIN=  298.15  PIN=0.10000E+06   TOUT=  303.21  POUT=0.10000E+06
+      AREA= 1.6950           DUTY= 41262.           FT=1.00000
+
+      BEGIN HEATX TQ-CURVE CALCULATIONS FOR BLOCK B5      
+
+      BEGIN COLD-TQCURVE INLET   
+      NO. TEMP ITER =    5     TEMP =  303.207    
+      KODE = 1  NTRIAL =   2  T = 303.2066  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  302.966    
+      KODE = 1  NTRIAL =   2  T = 302.9664  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  302.726    
+      KODE = 1  NTRIAL =   2  T = 302.7261  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  302.486    
+      KODE = 1  NTRIAL =   2  T = 302.4857  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  302.245    
+      KODE = 1  NTRIAL =   2  T = 302.2453  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  302.005    
+      KODE = 1  NTRIAL =   2  T = 302.0048  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  301.764    
+      KODE = 1  NTRIAL =   2  T = 301.7643  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  301.524    
+      KODE = 1  NTRIAL =   2  T = 301.5237  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  301.283    
+      KODE = 1  NTRIAL =   2  T = 301.2831  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  301.042    
+      KODE = 1  NTRIAL =   2  T = 301.0424  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  300.802    
+      KODE = 1  NTRIAL =   2  T = 300.8016  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  300.561    
+      KODE = 1  NTRIAL =   2  T = 300.5608  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  300.320    
+      KODE = 1  NTRIAL =   2  T = 300.3200  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  300.079    
+      KODE = 1  NTRIAL =   2  T = 300.0791  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  299.838    
+      KODE = 1  NTRIAL =   2  T = 299.8381  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  299.597    
+      KODE = 1  NTRIAL =   2  T = 299.5971  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  299.356    
+      KODE = 1  NTRIAL =   2  T = 299.3561  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  299.115    
+      KODE = 1  NTRIAL =   2  T = 299.1150  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  298.874    
+      KODE = 1  NTRIAL =   2  T = 298.8738  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  298.633    
+      KODE = 1  NTRIAL =   2  T = 298.6326  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  298.391    
+      KODE = 1  NTRIAL =   2  T = 298.3913  P =  100000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  298.150    
+      KODE = 1  NTRIAL =   2  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+
+      BEGIN HOT-TQCURVE  INLET   
+      NO. TEMP ITER =    1     TEMP =  351.972    
+      KODE = 1  NTRIAL =   2  T = 351.9716  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  350.249    
+      KODE = 1  NTRIAL =   2  T = 350.2491  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  348.514    
+      KODE = 1  NTRIAL =   2  T = 348.5141  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  346.767    
+      KODE = 1  NTRIAL =   2  T = 346.7666  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  345.007    
+      KODE = 1  NTRIAL =   2  T = 345.0065  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  343.234    
+      KODE = 1  NTRIAL =   2  T = 343.2339  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  341.449    
+      KODE = 1  NTRIAL =   2  T = 341.4487  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  339.651    
+      KODE = 1  NTRIAL =   2  T = 339.6508  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  337.840    
+      KODE = 1  NTRIAL =   2  T = 337.8403  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  336.017    
+      KODE = 1  NTRIAL =   2  T = 336.0171  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  334.181    
+      KODE = 1  NTRIAL =   2  T = 334.1812  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  332.333    
+      KODE = 1  NTRIAL =   2  T = 332.3325  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  330.471    
+      KODE = 1  NTRIAL =   2  T = 330.4712  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  328.597    
+      KODE = 1  NTRIAL =   2  T = 328.5972  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  326.710    
+      KODE = 1  NTRIAL =   2  T = 326.7105  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  324.811    
+      KODE = 1  NTRIAL =   2  T = 324.8111  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    4     TEMP =  322.899    
+      KODE = 1  NTRIAL =   2  T = 322.8990  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  320.974    
+      KODE = 1  NTRIAL =   2  T = 320.9743  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  319.037    
+      KODE = 1  NTRIAL =   2  T = 319.0370  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  317.087    
+      KODE = 1  NTRIAL =   2  T = 317.0872  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  315.125    
+      KODE = 1  NTRIAL =   2  T = 315.1248  P =  104000.      V =  0.00000      Q =  0.00000    
+      NO. TEMP ITER =    5     TEMP =  313.150    
+      KODE = 1  NTRIAL =   2  T = 313.1500  P =  104000.      V =  0.00000      Q =  0.00000    
+
+      BEGIN COLD-TQCURVE INLET   
+
+      BEGIN HOT-TQCURVE  INLET   
+      END HEATX TQ-CURVE CALCULATIONS FOR BLOCK B5      
+
+ Report Writer entered                                                            Time =   3185.18
+
+      BEGIN HEATX TQ-CURVE REPORT FOR BLOCK B5      
+
+      BEGIN COLD-TQCURVE INLET   
+
+      BEGIN HOT-TQCURVE  INLET   
+      END HEATX TQ-CURVE REPORT FOR BLOCK B5      
+
+ Results generated                                                                Time =   3185.33
+
+ Report Writer entered                                                            Time =   3186.66
+
+      BEGIN HEATX TQ-CURVE REPORT FOR BLOCK B5      
+
+      BEGIN COLD-TQCURVE INLET   
+
+      BEGIN HOT-TQCURVE  INLET   
+      END HEATX TQ-CURVE REPORT FOR BLOCK B5      
+
+ Results generated                                                                Time =   3186.79
+
+RUN SAVED
+
+
+
+ *** SUMMARY OF ERRORS ***
+
+                  PHYSICAL
+                  PROPERTY  SYSTEM  SIMULATION
+ TERMINAL ERRORS      0        0         0
+   SEVERE ERRORS      0        0         4
+          ERRORS      0        0         2
+        WARNINGS      0        0         2

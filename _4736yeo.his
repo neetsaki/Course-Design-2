@@ -1,0 +1,469 @@
+
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + +                                                                         + +
+ + +                      ASPEN PLUS CALCULATION HISTORY                     + +
+ + +                                                                         + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+
+ ASPEN PLUS IS A TRADEMARK OF           HOTLINE:
+ ASPEN TECHNOLOGY, INC.                 U.S.A. 888/996-7100
+ 781/221-6400                           EUROPE (44) 1189-226555
+
+ PLATFORM: WINDOWS                                       SEPTEMBER 1, 2019   
+ VERSION: 36.0   Build 249                               SUNDAY      
+ INSTALLATION:                                           9:12:51 P.M.        
+
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+
+
+      ASPEN PLUS (R) IS A PROPRIETARY PRODUCT OF ASPEN TECHNOLOGY, INC.
+      (ASPENTECH), AND MAY BE USED ONLY UNDER AGREEMENT WITH ASPENTECH.
+      RESTRICTED RIGHTS LEGEND:  USE, REPRODUCTION, OR DISCLOSURE BY THE
+      U.S. GOVERNMENT IS SUBJECT TO RESTRICTIONS SET FORTH IN 
+      (i) FAR 52.227-14, Alt. III, (ii) FAR 52.227-19, (iii) DFARS 
+      252.227-7013(c)(1)(ii), or (iv) THE ACCOMPANYING LICENSE AGREEMENT,
+      AS APPLICABLE. FOR PURPOSES OF THE FAR, THIS SOFTWARE SHALL BE DEEMED
+      TO BE "UNPUBLISHED" AND LICENSED WITH DISCLOSURE PROHIBITIONS.
+      CONTRACTOR/SUBCONTRACTOR: ASPEN TECHNOLOGY, INC. 20 CROSBY DRIVE,
+      BEDFORD, MA 01730.
+ *** INPUT SUMMARY ***
+
+ >>CURRENT RUN
+
+   ORIGINAL RUN                           SEPTEMBER 1, 2019   
+   9:12:51 P.M.                           SUNDAY      
+   INPUT FILE: _4736yeo.inm
+   RUN ID : _4736yeo
+          1    ;
+          2    ;Input file created by Aspen Plus Rel. 36.0 at 21:12:51 Sun Sep 1, 2019
+          3    ;Directory C:\Users\neetsaki\Desktop\course design2  Runid SIMULATION 8
+          4    ;
+          5
+          6
+          7    DYNAMICS
+          8        DYNAMICS RESULTS=ON
+          9
+         10    IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         11            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         12
+         13    DEF-STREAMS CONVEN ALL
+         14
+         15    MODEL-OPTION
+         16
+         17    DATABANKS 'APV100 PURE36' / 'APV100 AQUEOUS' / 'APV100 SOLIDS' &
+         18             / 'APV100 INORGANIC' / 'APESV100 AP-EOS' /  &
+         19            'NISTV100 NIST-TRC' / NOASPENPCD
+         20
+         21    PROP-SOURCES 'APV100 PURE36' / 'APV100 AQUEOUS' /  &
+         22            'APV100 SOLIDS' / 'APV100 INORGANIC' / 'APESV100 AP-EOS' &
+         23             / 'NISTV100 NIST-TRC'
+         24
+         25    COMPONENTS
+         26        WATER H2O /
+         27        ETHAN-01 C2H6O-2
+         28
+         29    SOLVE
+         30        RUN-MODE MODE=SIM
+         31
+         32    FLOWSHEET
+         33        BLOCK B2 IN=VAPOR F OUT=D B
+         34
+         35    PROPERTIES NRTL
+         36
+         37    PROP-DATA NRTL-1
+         38        IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         39            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         40        PROP-LIST NRTL
+         41        BPVAL WATER ETHAN-01 3.457800000 -586.0809000 .3000000000  &
+         42            0.0 0.0 0.0 24.99000000 100.0000000
+         43        BPVAL ETHAN-01 WATER -.8009000000 246.1800000 .3000000000  &
+         44            0.0 0.0 0.0 24.99000000 100.0000000
+         45
+         46    STREAM F
+         47        SUBSTREAM MIXED PRES=1.4 VFRAC=0.  &
+         48            MOLE-FLOW=61.807362895 <mol/sec>
+         49        MOLE-FRAC WATER 0.884615 / ETHAN-01 0.115385
+         50
+         51    STREAM VAPOR
+         52        SUBSTREAM MIXED PRES=2. <atm> VFRAC=1.  &
+         53            MOLE-FLOW=38.921115137 <mol/sec>
+         54        MOLE-FRAC WATER 1. / ETHAN-01 0.
+         55
+         56    BLOCK B2 RADFRAC
+         57        PARAM NSTAGE=38 ALGORITHM=NEWTON INIT-OPTION=AZEOTROPIC  &
+         58            HYDRAULIC=NO MAXOL=25 DAMPING=NONE
+         59        PARAM2 STATIC-DP=YES
+         60        COL-CONFIG CONDENSER=TOTAL REBOILER=NONE CA-CONFIG=INT-1
+         61        FEEDS VAPOR 38 ON-STAGE / F 29
+         62        PRODUCTS D 1 L / B 38 L
+         63        P-SPEC 1 1.04
+         64        COL-SPECS DP-STAGE=667. <Pa> MOLE-RR=3.7161
+         65        REPORT NOHYDRAULIC
+         66
+         67    EO-CONV-OPTI
+         68
+         69    STREAM-REPOR MOLEFLOW
+         70    ;
+         71    ;
+         72    ;
+         73    ;
+         74    ;
+ *** INPUT TRANSLATOR MESSAGES ***
+
+  *** THIS RUN USES THE PROPERTIES ENTERPRISE DATABASE ***
+      SQLLOCALDB.APESV100 : (DATAVERSION - 36.0.0.1)                          
+      SQLLOCALDB.APV100 : (DATAVERSION - 36.0.0.21)                           
+      SQLLOCALDB.FACTV100 : (DATAVERSION - 36.0.0.1)                          
+      SQLLOCALDB.NISTV100 : (DATAVERSION - 36.0.0.15)                         
+ 
+ 
+
+ PDF updated                                                                      TIME =      2.19
+
+ *** CALCULATION TRACE ***
+
+
+ *** FLOWSHEET ANALYSIS MESSAGES ***
+
+ FLOWSHEET CONNECTIVITY BY STREAMS       
+
+   STREAM     SOURCE     DEST           STREAM     SOURCE     DEST
+   F          ----       B2             VAPOR      ----       B2      
+   D          B2         ----           B          B2         ----    
+
+ FLOWSHEET CONNECTIVITY BY BLOCKS        
+
+   BLOCK        INLETS                         OUTLETS
+   B2           VAPOR F                        D B                         
+
+      COMPUTATION ORDER FOR THE FLOWSHEET IS:
+      B2 
+
+Calculations begin                                                              time      0.04
+
+
+ SIMULATION CALCULATIONS BEGIN                                                    TIME =      0.04
+
+      ENTHALPY CALCULATION FOR INLET STREAM VAPOR OF BLOCK B2                     TIME =      0.04
+      KODE = 3  NTRIAL =   3  T = 393.8392  P =  202650.      V =  1.00000      Q =  0.00000    
+
+      ENTHALPY CALCULATION FOR INLET STREAM F OF BLOCK B2                         TIME =      0.04
+      KODE = 3  NTRIAL =   4  T = 367.2259  P =  140000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =      0.04
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0     0.11929E+07
+              1     0.10409E+07
+              2     0.13812E+07
+              3     0.13947E+07
+              4     0.13050E+07
+              5     0.10434E+07
+              6     0.64491E+06
+              7     0.79630E+06
+              8     0.19820E+06
+              9     0.11546E+06
+             10     0.15795E+06
+             11     0.16636E+06
+             12     0.14831E+06
+             13     0.10423E+06
+             14     0.13700E+06
+             15     0.15891E+06
+             16     0.15383E+06
+             17     0.16531E+06
+             18     0.13805E+06
+             19     0.17797E+06
+             20     0.14243E+06
+             21     0.13019E+06
+             22     0.12323E+06
+             23     0.11804E+06
+             24     0.11648E+06
+             25     0.11648E+06
+
+  *** SEVERE ERROR WHILE EXECUTING UNIT OPERATIONS BLOCK: "B2" (MODEL:          
+      "RADFRAC")                                               (UDL03K.3)       
+      MATERIAL AND ENERGY BALANCES FAILED TO CONVERGE: CHECK COL-SPECS          
+      OR SUPPLY BETTER TEMPERATURE AND COMPOSITION ESTIMATES.                   
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ CHANGES WERE MADE TO BLOCK        B2       09/01/2019   21:13:13:20 
+ BLOCK B2 RADFRAC
+     PARAM NSTAGE=38 ALGORITHM=NEWTON INIT-OPTION=AZEOTROPIC  &
+         HYDRAULIC=NO MAXOL=25 DAMPING=NONE
+     PARAM2 STATIC-DP=YES
+     COL-CONFIG CONDENSER=TOTAL REBOILER=NONE CA-CONFIG=INT-1
+     FEEDS VAPOR 38 ON-STAGE / F 29
+     PRODUCTS D 1 L / B 38 L
+     P-SPEC 1 1.04
+     COL-SPECS DP-STAGE=667. <Pa> MOLE-D=8.1 <mol/sec>
+     REPORT NOHYDRAULIC
+
+ PDF updated                                                                      TIME =     19.47
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+
+
+Calculations begin                                                              time     19.50
+
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =     19.50
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      72639.    
+              1     0.15085E+06
+              2     0.21961E+06
+              3     0.21553E+06
+              4     0.22189E+06
+              5     0.22346E+06
+              6     0.39375E+06
+              7     0.56105E+06
+              8     0.60313E+06
+              9     0.59904E+06
+             10     0.57683E+06
+             11     0.52695E+06
+             12     0.59382E+06
+             13      81458.    
+             14      1281.8    
+             15     0.61669    
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ CHANGES WERE MADE TO BLOCK        B2       09/01/2019   21:13:22:88 
+ BLOCK B2 RADFRAC
+     PARAM NSTAGE=38 ALGORITHM=NEWTON INIT-OPTION=AZEOTROPIC  &
+         HYDRAULIC=NO MAXOL=25 DAMPING=NONE
+     PARAM2 STATIC-DP=YES
+     COL-CONFIG CONDENSER=TOTAL REBOILER=NONE CA-CONFIG=INT-1
+     FEEDS VAPOR 38 ON-STAGE / F 29
+     PRODUCTS D 1 L / B 38 L
+     P-SPEC 1 1.04
+     COL-SPECS DP-STAGE=667. <Pa> MOLE-D=8.2 <mol/sec>
+     REPORT NOHYDRAULIC
+
+ PDF updated                                                                      TIME =     29.15
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+
+
+Calculations begin                                                              time     29.18
+
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =     29.18
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0      282.04    
+              1      30284.    
+              2      11302.    
+              3      252.53    
+              4     0.34368E-01
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ CHANGES WERE MADE TO BLOCK        B2       09/01/2019   21:27:00:78 
+ BLOCK B2 RADFRAC
+     PARAM NSTAGE=38 ALGORITHM=NEWTON INIT-OPTION=AZEOTROPIC  &
+         HYDRAULIC=YES MAXOL=25 DAMPING=NONE
+     PARAM2 STATIC-DP=YES
+     COL-CONFIG CONDENSER=TOTAL REBOILER=NONE CA-CONFIG=INT-1
+     FEEDS VAPOR 38 ON-STAGE / F 29
+     PRODUCTS D 1 L / B 38 L
+     P-SPEC 1 1.04
+     COL-SPECS DP-STAGE=667. <Pa> MOLE-D=8.2 <mol/sec>
+     REPORT HYDRAULIC
+
+ PDF updated                                                                      TIME =    847.05
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+
+
+Calculations begin                                                              time    847.08
+
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =    847.08
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0     0.22931E-01
+              1     0.12101E-06
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ CHANGES WERE MADE TO BLOCK        B2       09/01/2019   21:27:49:04 
+ BLOCK B2 RADFRAC
+     SUBOBJECTS INTERNALS = CS-1 CS-2
+     PARAM NSTAGE=38 ALGORITHM=NEWTON INIT-OPTION=AZEOTROPIC  &
+         HYDRAULIC=NO MAXOL=25 DAMPING=NONE
+     PARAM2 STATIC-DP=YES
+     COL-CONFIG CONDENSER=TOTAL REBOILER=NONE CA-CONFIG=INT-1
+     FEEDS VAPOR 38 ON-STAGE / F 29
+     PRODUCTS D 1 L / B 38 L
+     P-SPEC 1 1.04
+     COL-SPECS DP-STAGE=667. <Pa> MOLE-D=8.2 <mol/sec>
+     REPORT NOHYDRAULIC
+     INTERNALS CS-1 STAGE1=2 STAGE2=29 P-UPDATE=NO
+     TRAY-SIZE 1 2 29 SIEVE
+     INTERNALS CS-2 STAGE1=30 STAGE2=38 P-UPDATE=NO
+     TRAY-SIZE 2 30 38 SIEVE
+
+ PDF updated                                                                      TIME =    895.31
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+
+
+Calculations begin                                                              time    895.47
+
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =    895.47
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0     0.46874E-07
+
+ Report Writer entered                                                            Time =   4346.25
+
+ Results generated                                                                Time =   4346.33
+
+ Report Writer entered                                                            Time =   4347.46
+
+ Results generated                                                                Time =   4347.53
+
+RUN SAVED
+
+
+
+ *** SUMMARY OF ERRORS ***
+
+                  PHYSICAL
+                  PROPERTY  SYSTEM  SIMULATION
+ TERMINAL ERRORS      0        0         0
+   SEVERE ERRORS      0        0         1
+          ERRORS      0        0         0
+        WARNINGS      0        0         0
+
+RUN SAVED
+
+
+
+ *** SUMMARY OF ERRORS ***
+
+                  PHYSICAL
+                  PROPERTY  SYSTEM  SIMULATION
+ TERMINAL ERRORS      0        0         0
+   SEVERE ERRORS      0        0         1
+          ERRORS      0        0         0
+        WARNINGS      0        0         0
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ CHANGES WERE MADE TO BLOCK        B2       09/01/2019   22:56:10:83 
+ BLOCK B2 RADFRAC
+     SUBOBJECTS INTERNALS = CS-1 CS-2
+     PARAM NSTAGE=38 ALGORITHM=NEWTON INIT-OPTION=AZEOTROPIC  &
+         HYDRAULIC=NO MAXOL=25 DAMPING=NONE
+     PARAM2 STATIC-DP=YES
+     COL-CONFIG CONDENSER=TOTAL REBOILER=NONE CA-CONFIG=INT-1
+     FEEDS VAPOR 38 ON-STAGE / F 29
+     PRODUCTS D 1 L / B 38 L
+     P-SPEC 1 1.04
+     COL-SPECS DP-STAGE=667. <Pa> MOLE-D=8.2 <mol/sec>
+     REPORT NOHYDRAULIC
+     INTERNALS CS-1 STAGE1=2 STAGE2=29 P-UPDATE=NO  &
+         TRAY-SPACE=0.6 DIAM=0.8 NHOLES=46
+     TRAY-SIZE 1 2 29 SIEVE
+     INTERNALS CS-2 STAGE1=30 STAGE2=38 P-UPDATE=NO  &
+         TRAY-SPACE=0.6 DIAM=0.8 HOLE-DIAM=14.8 <mm> NHOLES=46
+     TRAY-SIZE 2 30 38 SIEVE
+
+ PDF updated                                                                      TIME =   6197.10
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+
+
+Calculations begin                                                              time   6197.13
+
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   6197.13
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0     0.46799E-07
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ CHANGES WERE MADE TO BLOCK        B2       09/01/2019   22:59:28:16 
+ BLOCK B2 RADFRAC
+     SUBOBJECTS INTERNALS = CS-1 CS-2
+     PARAM NSTAGE=38 ALGORITHM=NEWTON INIT-OPTION=AZEOTROPIC  &
+         HYDRAULIC=NO MAXOL=25 DAMPING=NONE
+     PARAM2 STATIC-DP=YES
+     COL-CONFIG CONDENSER=TOTAL REBOILER=NONE CA-CONFIG=INT-1
+     FEEDS VAPOR 38 ON-STAGE / F 29
+     PRODUCTS D 1 L / B 38 L
+     P-SPEC 1 1.04
+     COL-SPECS DP-STAGE=667. <Pa> MOLE-D=8.2 <mol/sec>
+     REPORT NOHYDRAULIC
+     INTERNALS CS-1 STAGE1=2 STAGE2=29 P-UPDATE=NO  &
+         TRAYTYPE=FLEX-A14 TRAY-SPACE=0.6 DIAM=0.8 NVALVES=32  &
+         VALVE-THICK=0.074 <IN>
+     TRAY-SIZE 1 2 29 FLEXI
+     INTERNALS CS-2 STAGE1=30 STAGE2=38 P-UPDATE=NO  &
+         TRAYTYPE=FLEX-A14 TRAY-SPACE=0.6 DIAM=0.8  &
+         VALVE-THICK=0.074 <IN>
+     TRAY-SIZE 2 30 38 FLEXI
+
+ PDF updated                                                                      TIME =   6394.43
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+
+
+Calculations begin                                                              time   6394.47
+
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   6394.47
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0     0.46794E-07
+
+
+*** INPUT SPECIFICATION MESSAGES ***
+
+ CHANGES WERE MADE TO BLOCK        B2       09/01/2019   23:00:51:68 
+ BLOCK B2 RADFRAC
+     SUBOBJECTS INTERNALS = CS-1 CS-2
+     PARAM NSTAGE=38 ALGORITHM=NEWTON INIT-OPTION=AZEOTROPIC  &
+         HYDRAULIC=NO MAXOL=25 DAMPING=NONE
+     PARAM2 STATIC-DP=YES
+     COL-CONFIG CONDENSER=TOTAL REBOILER=NONE CA-CONFIG=INT-1
+     FEEDS VAPOR 38 ON-STAGE / F 29
+     PRODUCTS D 1 L / B 38 L
+     P-SPEC 1 1.04
+     COL-SPECS DP-STAGE=667. <Pa> MOLE-D=8.2 <mol/sec>
+     REPORT NOHYDRAULIC
+     INTERNALS CS-1 STAGE1=2 STAGE2=29 P-UPDATE=NO  &
+         TRAYTYPE=FLEX-A16 TRAY-SPACE=0.6 DIAM=0.8 NVALVES=32  &
+         VALVE-THICK=0.060 <IN>
+     TRAY-SIZE 1 2 29 FLEXI
+     INTERNALS CS-2 STAGE1=30 STAGE2=38 P-UPDATE=NO  &
+         TRAYTYPE=FLEX-A16 TRAY-SPACE=0.6 DIAM=0.8  &
+         VALVE-THICK=0.060 <IN>
+     TRAY-SIZE 2 30 38 FLEXI
+
+ PDF updated                                                                      TIME =   6477.95
+ THIS COPY OF ASPEN PLUS LICENSED TO                                
+
+
+Calculations begin                                                              time   6477.98
+
+
+      UOS BLOCK B2       MODEL: RADFRAC                                           TIME =   6477.98
+
+       Convergence iterations:
+           Iter     Err/Tol
+              0     0.46763E-07

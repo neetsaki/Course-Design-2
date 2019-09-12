@@ -1,0 +1,226 @@
+
+ BLOCK:  B2       MODEL: RADFRAC         
+ -------------------------------
+    INLETS   - VAPOR    STAGE  38
+               F        STAGE  28
+    OUTLETS  - D        STAGE   1
+               B        STAGE  38
+   PROPERTY OPTION SET:   NRTL      RENON (NRTL) / IDEAL GAS                    
+
+
+     ***********************************************************************
+     *                                                                     *
+     *     ERRORS IN BLOCK CALCULATIONS                                    *
+     *                                                                     *
+     *     COMPONENT BALANCE EQUATIONS FAILED TO CONVERGE.                 *   
+     *                                                                     *
+     ***********************************************************************
+
+
+                      ***  MASS AND ENERGY BALANCE  ***
+                                    IN              OUT        RELATIVE DIFF.
+    TOTAL BALANCE
+       MOLE(KMOL/HR )            84.8921         84.8921        0.100007E-06
+       MASS(KG/HR   )            1697.97         1697.97        0.211940E-06
+       ENTHALPY(CAL/SEC )      -0.148546E+07   -0.157021E+07    0.539767E-01
+
+                      ***  CO2 EQUIVALENT SUMMARY ***
+    FEED STREAMS CO2E             0.00000      KG/HR           
+    PRODUCT STREAMS CO2E          0.00000      KG/HR           
+    NET STREAMS CO2E PRODUCTION   0.00000      KG/HR           
+    UTILITIES CO2E PRODUCTION     0.00000      KG/HR           
+    TOTAL CO2E PRODUCTION         0.00000      KG/HR           
+
+
+
+                         **********************
+                         ****  INPUT DATA  ****
+                         **********************
+
+   ****   INPUT PARAMETERS   ****
+
+    NUMBER OF STAGES                                        38
+    ALGORITHM OPTION                                      NEWTON      
+    INITIALIZATION OPTION                                 AZEOTROPIC  
+    HYDRAULIC PARAMETER CALCULATIONS                      NO      
+    DESIGN SPECIFICATION METHOD                           SIMULT  
+    MAXIMUM NO. OF NEWTON ITERATIONS                        25
+    MAXIMUM NUMBER OF FLASH ITERATIONS                      30
+    FLASH TOLERANCE                                          0.000100000
+    COLUMN EQUATIONS CONVERGENCE TOLERANCE                   0.100000-06
+
+   ****   COL-SPECS   ****
+
+    MOLAR VAPOR DIST / TOTAL DIST                            0.0        
+    MOLAR DISTILLATE RATE          KMOL/HR                   6.95533    
+    REBOILER DUTY                  CAL/SEC                   0.0        
+
+   ****    PROFILES   ****
+
+    P-SPEC          STAGE   1  PRES, BAR                     1.04000    
+
+                          *******************
+                          ****  RESULTS  ****
+                          *******************
+
+
+   ***   COMPONENT SPLIT FRACTIONS   ***
+
+                             OUTLET STREAMS 
+                             --------------
+                  D            B       
+    COMPONENT:
+    WATER       .11936E-01   .98806    
+    ETHAN-01    .99997       .28896E-04
+
+ 
+   ***    SUMMARY OF KEY RESULTS    ***
+
+    TOP STAGE TEMPERATURE          C                        78.8239     
+    BOTTOM STAGE TEMPERATURE       C                       106.872      
+    TOP STAGE LIQUID FLOW          KMOL/HR                  25.4237     
+    BOTTOM STAGE LIQUID FLOW       KMOL/HR                  77.9404     
+    TOP STAGE VAPOR FLOW           KMOL/HR                   0.0        
+    BOILUP VAPOR FLOW              KMOL/HR                  33.2261     
+    MOLAR REFLUX RATIO                                       3.65715    
+    CONDENSER DUTY (W/O SUBCOOL)   CAL/SEC             -84,706.0        
+    REBOILER DUTY                  CAL/SEC                   0.0        
+
+   ****   MAXIMUM FINAL RELATIVE ERRORS   ****
+
+    DEW POINT                       0.27788E-01  STAGE= 34
+    BUBBLE POINT                    0.28469E-01  STAGE= 34
+    COMPONENT MASS BALANCE          0.26351E-06  STAGE=  1 COMP=ETHAN-01
+    ENERGY BALANCE                  0.19991E-01  STAGE= 35
+
+
+   ****    PROFILES   ****
+
+   **NOTE** REPORTED VALUES FOR STAGE LIQUID AND VAPOR RATES ARE THE FLOWS
+            FROM THE STAGE INCLUDING ANY SIDE PRODUCT.
+
+                                          ENTHALPY
+ STAGE TEMPERATURE   PRESSURE             CAL/MOL            HEAT DUTY
+       C             BAR            LIQUID       VAPOR        CAL/SEC 
+
+   1   78.824        1.0400       -64924.      -55499.      -.84706+05
+   2   78.991        1.0467       -64932.      -55505.                
+  26   83.714        1.2067       -65572.      -55803.                
+  27   84.651        1.2134       -65889.      -55893.                
+  28   87.273        1.2201       -66528.      -56052.                
+  29   87.473        1.2268       -66533.      -56053.                
+  33   102.81        1.2534       -66783.      -56810.                
+  34   106.26        1.2601       -66742.      -57031.                
+  35   107.02        1.2668       -66732.      -57082.                
+  36   106.72        1.2734       -66739.      -57095.                
+  37   106.78        1.2801       -66738.      -57096.                
+  38   106.87        1.2868       -66736.      -57096.                
+
+ STAGE     FLOW RATE                  FEED RATE               PRODUCT RATE
+            KMOL/HR                    KMOL/HR                  KMOL/HR 
+       LIQUID     VAPOR       LIQUID    VAPOR    MIXED      LIQUID    VAPOR
+   1  32.38      0.000                                        6.9517          
+   2  25.42      32.38                                                        
+  26  25.02      32.10                                                        
+  27  24.73      31.97                                                        
+  28  76.56      31.69        52.0901                                         
+  29  76.57      31.42                                                        
+  33  80.93      33.71                                                        
+  34  81.10      35.79                                                        
+  35  79.33      35.97                                                        
+  36  78.67      34.19                                                        
+  37  78.36      33.53                                                        
+  38  77.94      33.23                            32.8020    77.9403          
+
+    ****  MASS FLOW PROFILES  ****
+
+ STAGE     FLOW RATE                  FEED RATE               PRODUCT RATE
+            KG/HR                      KG/HR                    KG/HR   
+       LIQUID     VAPOR       LIQUID    VAPOR    MIXED      LIQUID    VAPOR
+   1  1368.      0.000                                      293.8478          
+   2  1071.      1368.                                                        
+  26  857.5      1199.                                                        
+  27  767.2      1151.                                                        
+  28  1864.      1061.      1107.0331                                         
+  29  1857.      1051.                                                        
+  33  1488.      736.1                                                        
+  34  1467.      674.6                                                        
+  35  1430.      653.5                                                        
+  36  1417.      617.0                                                        
+  37  1412.      604.3                                                        
+  38  1404.      598.6                           590.9374  1404.1222          
+
+                         ****   MOLE-X-PROFILE     ****
+   STAGE     WATER         ETHAN-01
+      1    0.13544       0.86456    
+      2    0.14054       0.85946    
+     26    0.42065       0.57935    
+     27    0.53655       0.46345    
+     28    0.77439       0.22561    
+     29    0.77777       0.22223    
+     33    0.98689       0.13111E-01
+     34    0.99757       0.24294E-02
+     35    0.99957       0.43424E-03
+     36    0.99992       0.79074E-04
+     37    0.99999       0.14210E-04
+     38     1.0000       0.22283E-05
+
+                         ****   MOLE-Y-PROFILE     ****
+   STAGE     WATER         ETHAN-01
+      1    0.13120       0.86880    
+      2    0.13544       0.86456    
+     26    0.31046       0.68954    
+     27    0.35864       0.64136    
+     28    0.44854       0.55146    
+     29    0.45030       0.54970    
+     33    0.86378       0.13622    
+     34    0.97036       0.29641E-01
+     35    0.99453       0.54736E-02
+     36    0.99900       0.10024E-02
+     37    0.99982       0.18034E-03
+     38    0.99997       0.28288E-04
+
+                         ****   K-VALUES           ****
+   STAGE     WATER         ETHAN-01
+      1    0.96865        1.0049    
+      2    0.96364        1.0059    
+     26    0.73817        1.1901    
+     27    0.66850        1.3838    
+     28    0.57923        2.4440    
+     29    0.57890        2.4733    
+     33    0.89261        10.403    
+     34     1.0005        12.499    
+     35     1.0213        12.930    
+     36     1.0058        12.760    
+     37     1.0025        12.725    
+     38     1.0004        12.700    
+
+                         ****   MASS-X-PROFILE     ****
+   STAGE     WATER         ETHAN-01
+      1    0.57724E-01   0.94228    
+      2    0.60102E-01   0.93990    
+     26    0.22114       0.77886    
+     27    0.31164       0.68836    
+     28    0.57305       0.42695    
+     29    0.57782       0.42218    
+     33    0.96714       0.32857E-01
+     34    0.99381       0.61892E-02
+     35    0.99889       0.11097E-02
+     36    0.99980       0.20219E-03
+     37    0.99996       0.36337E-04
+     38    0.99999       0.56984E-05
+
+                         ****   MASS-Y-PROFILE     ****
+   STAGE     WATER         ETHAN-01
+      1    0.55761E-01   0.94424    
+      2    0.57724E-01   0.94228    
+     26    0.14971       0.85029    
+     27    0.17943       0.82057    
+     28    0.24132       0.75868    
+     29    0.24262       0.75738    
+     33    0.71262       0.28738    
+     34    0.92754       0.72455E-01
+     35    0.98612       0.13879E-01
+     36    0.99744       0.25594E-02
+     37    0.99954       0.46104E-03
+     38    0.99993       0.72334E-04
