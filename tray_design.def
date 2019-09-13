@@ -1,0 +1,10 @@
+INPUT: tray_design.inm
+MODNAME: apmain
+RUNID: tray_design
+NEW_RUNID: tray_design
+OLD_RUNID: tray_design
+PDF: tray_design.appdf
+USERNAME: neetsaki
+XMOD: d:\AspenTech (x86)\Aspen Plus V10.0\Engine\xeq\apmain
+SPONLY:
+DBCONN: _4736yeo.ads

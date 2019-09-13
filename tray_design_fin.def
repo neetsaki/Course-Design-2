@@ -1,0 +1,10 @@
+INPUT: tray_design_fin.inm
+MODNAME: apmain
+RUNID: tray_design_fin
+NEW_RUNID: tray_design_fin
+OLD_RUNID: tray_design_fin
+PDF: tray_design_fin.appdf
+USERNAME: neetsaki
+XMOD: d:\AspenTech (x86)\Aspen Plus V10.0\Engine\xeq\apmain
+SPONLY:
+DBCONN: _1452vmi.ads
